@@ -28,3 +28,5 @@ trends.csv
 
 str(trends.csv)
 View(trends.csv)
+
+rm(list = ls())  # Clean up - clears from environment 
