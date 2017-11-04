@@ -64,13 +64,20 @@ admit3 <- as.data.frame(admit2)
 # remove frequency column (redundant info) 
 admit4 <- admit3[, -4]
 
-# Funtion to do everything at once 
+# Funtion to do everything at once - use this function 
+# to quickly translate tabular dataset for analysis 
 admit.rows <- as.data.frame(lapply(as.data.frame.table
 (UCBAdmissions), function(x)rep(x, as.data.frame.table
 (UCBAdmissions)$Freq)))[, -4]
 
+str(admit.rows) # look at structure 
 admit.rows
+admit.rows[1:10, ] # look at first ten rows (of 4526) & all columns
+
 
 # Created simple adding function 
 add <- function(x)(x + 1)
 add(4)
+
+# Clean up 
+rm(list = ls())
