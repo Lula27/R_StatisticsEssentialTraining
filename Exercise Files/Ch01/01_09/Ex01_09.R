@@ -44,3 +44,17 @@ barplot(x, col = flor)
 barplot(x, col = plum)
 barplot(x, col = earth)
 barplot(x, col = sun)
+
+
+# Make colorful scattar plots
+plot(x, col = "Blue")
+
+# fill circle in point - use pch=15 to fill circles
+plot(x, col="Blue", pch=15)
+
+# Change pch=number for different point shapes (ie: squares, triangles, boxes, etc)
+plot(x, col=sun, pch=17)
+plot(x, col=flor, pch=12)
+
+# Clean up
+rm(list = ls())
