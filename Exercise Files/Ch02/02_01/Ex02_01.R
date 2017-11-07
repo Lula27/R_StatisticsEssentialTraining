@@ -59,6 +59,7 @@ barplot(feeds[order(feeds)],
         xlab   = "Number of Chicks"
         
         )
+rm(list = ls()) # clear up
 
 
 

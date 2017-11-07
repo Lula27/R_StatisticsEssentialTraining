@@ -10,12 +10,16 @@ require("datasets")
 
 # ONE ROW PER CASE
 ?chickwts
+
+anova(fml <- lm(weight ~ feed, data = chickwts))
+
 chickwts  # Look at data
 data(chickwts)  # Load data into workspace
 
-# Quickest Method
+# Quickest Method - useful but not customizable
 plot(chickwts$feed)  # Plot feed from chickwts
 ?plot
+
 
 # "barplot" offers more control but must prepare data:
 # R doesn't create bar charts directly from the categorical
@@ -27,6 +31,7 @@ barplot(feeds)  # Identical to plot(chickwts$feed)
 ?barplot
 
 # To put the bars in descending order, add "order":
+# default is increasing; indicate decreasing = TRUE 
 barplot(feeds[order(feeds, decreasing = TRUE)])
 
 # Customize the chart
@@ -40,5 +45,6 @@ barplot(feeds[order(feeds)],
         main   = "Frequencies of Different Feeds\nin chickwts Dataset",  # \n = line break
         xlab   = "Number of Chicks")
 ?par
+
 
 rm(list = ls())  # Clean up
