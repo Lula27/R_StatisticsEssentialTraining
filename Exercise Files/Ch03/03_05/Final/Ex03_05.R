@@ -8,6 +8,7 @@ str(HairEyeColor)
 HairEyeColor
 
 # Get marginal frequencies for eye color
+# Since it's a 3-D array, 1: Hair, 2:Eye, 3:Sex, use 2 to select eye 
 margin.table(HairEyeColor, 2)
 
 # Save eye color to data frame
@@ -32,5 +33,6 @@ browseURL("http://www.statisticbrain.com/eye-color-distribution-percentages/")
 # p = c(.41, .32, .15, .12)
 chi2 <- chisq.test(eyes, p = c(.41, .32, .15, .12))
 chi2
+
 
 rm(list = ls())  # Clean up

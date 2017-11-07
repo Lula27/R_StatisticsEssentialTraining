@@ -3,7 +3,8 @@
 # Following descriptive statistics/frequencies, conduct inferential statistics 
 # Use basic inferential statistic - Single Proportion 
 # Single proportion: Hypothesis test and confidence interval
-# Extra reading: https://stats.idre.ucla.edu/other/mult-pkg/faq/general/faq-what-are-the-differences-between-one-tailed-and-two-tailed-tests/ 
+# Extra reading: 
+browseURL("https://stats.idre.ucla.edu/other/mult-pkg/faq/general/faq-what-are-the-differences-between-one-tailed-and-two-tailed-tests/") 
 
 
 # In the 2012 Major League Baseball season,

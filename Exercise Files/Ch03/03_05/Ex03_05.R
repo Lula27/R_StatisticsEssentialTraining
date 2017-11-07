@@ -62,6 +62,7 @@ chi2
 # p-val = 0.09079 -> fail to reject ho 
 # Clean up
 
+rm(list = ls())
 
 
 
