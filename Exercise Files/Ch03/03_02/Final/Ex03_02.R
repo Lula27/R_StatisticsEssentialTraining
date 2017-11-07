@@ -6,11 +6,11 @@
 require("datasets")
 ?cars
 cars
-str(cars)
-data(cars)
+str(cars)  # look at structure 
+data(cars) # load to use 
 
 # CALCULATE DESCRIPTIVES
-summary(cars$speed)  # Summary for one variable
+summary(cars$speed)  # Summary for one variable - speed 
 summary(cars)  # Summary for entire table
 
 # Tukey's five-number summary: minimum, lower-hinge,
