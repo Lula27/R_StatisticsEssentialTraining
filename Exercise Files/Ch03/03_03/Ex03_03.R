@@ -37,4 +37,5 @@ prop.test(98, 162, alternative = "greater", conf.level = .90)
 
 
 # Clean up 
+rm(list = ls())
 
