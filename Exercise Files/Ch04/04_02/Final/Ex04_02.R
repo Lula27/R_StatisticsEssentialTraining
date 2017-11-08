@@ -41,7 +41,7 @@ boxplot(islands.ln)
 islands.rank1 <- rank(islands)
 hist(islands.rank1)
 boxplot(islands.rank1)
-# ties.method = c("average", "first", "random", "max", "min")
+#ties.method = c("average", "first", "random", "max", "min")
 islands.rank2 <- rank(islands, ties.method = "random")
 hist(islands.rank2)
 boxplot(islands.rank2)
@@ -54,3 +54,6 @@ continent <- ifelse(islands > 1000, 1, 0)
 continent
 
 rm(list = ls())  # Clean up
+
+# Remove image from enviornment 
+dev.off()

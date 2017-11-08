@@ -6,13 +6,14 @@
 # Outlier is < 10%
 # Worldwide shipments of smartphone OS
 # in millions for 2013 Q1
-OS <- read.csv("~/Desktop/R/OS.csv", header = TRUE)
+OS <- read.csv("C:\\Users\\loret\\Desktop\\DataSciencePrep\\R\\R_StatisticsEssentialTraining\\Exercise Files\\Ch04\\04_01\\OS.csv", header = TRUE)
 View(OS)
 OS
 
-# Outlier has proportion < .10
-# Either combine into "other" (if homogeneous) or delete
-OS.hi <- subset(OS, Proportion > 0.1)
+# Outlier has proportion < .10 - get rid of smallest values 
+# Either combine into "other" (if homogeneous) - often, want to avoid combining or delete
+# Store in new dataset so you don't mess up the original 
+OS.hi <- subset(OS, Proportion > 0.1)   # Select only those that are > 0.1 (10%) - to work with 
 OS.hi
 
 # Quantitative data
