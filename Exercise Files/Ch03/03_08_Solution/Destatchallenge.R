@@ -1,10 +1,11 @@
 # Goal: Produce Descriptive Statistics for mtcars dataset 
-# For the following variables - mpg, hp, & qsec
+# For the following variables - mpg, hp, & qsec (quater mile, time & second)
 # Calculate: mean, SD, skewness & kurtosis 
 # You have 5 minutes - GO! 
 
-
+# load data 
 data("mtcars")
+str(mtcars)
 
 # create variables
 mph <- mtcars$mpg
@@ -36,3 +37,15 @@ describe(qsec)
 # sd = 1.79
 # skew = 0.37
 # kurtosis =  0.34
+
+
+
+# An even faster, straight forward method 
+# Use psych with vector values to retrieve values quickly
+require(psych) 
+# c(1=mpg, 4=hp, qsec=7)
+descriptivevalues <- describe(mtcars[c(1, 4, 7)])
+descriptivevalues
+
+# Excessive data - strip to necessities: mean, SD, skewness & kurtosis 
+descriptivevalues[, c(3, 4, 11, 12)]
