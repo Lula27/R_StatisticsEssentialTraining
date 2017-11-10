@@ -7,12 +7,40 @@
 # Time constraint: 10 minutes
 
 
+# Take a way: for left (negative) skews, take power 
+# For right (positive) skews, take log 
+
 skdata <- read.csv('C:\\Users\\loret\\Desktop\\DataSciencePrep\\R\\R_StatisticsEssentialTraining\\Exercise Files\\Ch04\\04_05_Challenge\\xskew.csv')
+View(skdata)
+skdata
 
-# Select variable x
+
+# Select variable x - this is fine: I used a shorter method than solution code
 x <- skdata$x
+x
 hist(x)
+boxplot(x) # lots of outliers
+boxplot.stats(x)
 
+# Because this has a sharp left skew, I can force the plot to mirror a binomial distribution by squaring. 
+x.sq <- x^2 
+hist(x.sq)
+boxplot(x.sq) # outliers still present - but just less than before 
+boxplot.stats(x.sq) # significantly reduced outliers - take it to a power of 2
+
+
+
+x.fourth <- x^4
+hist(x.fourth) # looks better 
+boxplot(x.fourth) # outliers all gone looks like - check in dataset 
+boxplot.stats(x.fourth) # out listed as numeric(0) - all gone, yay! 
+
+
+
+
+
+
+# Scrap sheet 
 require(psych)
 kurtosi(x)   # = 2.300297
 boxplot(x)
@@ -48,5 +76,4 @@ prod
 hist(prod)
 boxplot(prod)
 
-# Try cutting out outliers
 
