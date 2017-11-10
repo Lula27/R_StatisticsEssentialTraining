@@ -77,3 +77,6 @@ mtcars[mtcars$mpg > 17 & mtcars$am == 1, ]
 # Create data frame for cars with  6 cyl & gear 4+
 higear <- mtcars[mtcars$cyl == 6 & mtcars$gear >= 4, ]
 higear
+
+# Clean up
+rm(list = ls())
