@@ -16,10 +16,11 @@ mean(x1, na.rm = T)
 
 # Replace missing values with 0 (or other number)
 # Option 1: Using "is.na"
-x2 <- x1
-x2[is.na(x2)] <- 0
+x2 <- x1    # Assign index of missing value to x2 
+x2[is.na(x2)] <- 0    # Assign 0 to x2
 x2
-# Option 2: using "ifelse"
+
+# Option 2: using "ifelse" - faster method 
 x3 <- ifelse(is.na(x1), 0, x1)
 x3
 
@@ -31,6 +32,6 @@ browseURL("http://cran.r-project.org/web/packages/mi/index.html")
 # mice: Multivariate Imputation by Chained Equations
 browseURL("http://cran.r-project.org/web/packages/mice/index.html")
 # imputation
-browseURL("http://cran.r-project.org/web/packages/imputation/index.html")
+browseURL("http://cran.r-project.org/web/packages/imputation/index.html") # removed from CRAN library 
 
 rm(list = ls())  # Clean up
