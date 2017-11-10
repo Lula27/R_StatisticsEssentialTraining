@@ -76,4 +76,6 @@ prod
 hist(prod)
 boxplot(prod)
 
-
+# Clean up
+rm(list = ls())
+dev.off()

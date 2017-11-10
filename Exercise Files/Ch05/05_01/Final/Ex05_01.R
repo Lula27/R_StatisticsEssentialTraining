@@ -1,6 +1,6 @@
 # R Statistics Essential Training
 # Ex05_01
-# Selecting cases
+# Selecting cases - fine tune analysis based on subset 
 
 # Load data
 ?mtcars
@@ -8,6 +8,7 @@ data(mtcars)
 mtcars
 
 # Mean quarter-mile time (for all cars)
+# [, 7]	 qsec	 1/4 mile time
 mean(mtcars$qsec)
 
 # Mean quarter-mile time (for 8-cylinder cars)
