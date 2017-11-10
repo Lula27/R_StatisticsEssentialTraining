@@ -19,6 +19,7 @@ boxplot(islands.z)  # Boxplot of z-scores
 mean(islands.z)  # M should equal 0
 round(mean(islands.z), 2)  # Round off to see M = 0
 sd(islands.z)  # SD = 1
+# Maintains metadata as an attribute from original dataset which can be accessed - use attr()
 attr(islands.z, "scaled:center")  # Show original mean
 attr(islands.z, "scaled:scale")  # Showoriginal SD
 islands.z <- as.numeric(islands.z)  # Converts from matrix back to numeric
@@ -30,14 +31,14 @@ islands.ln <- log(islands)  # Natural log (base = e)
 # islands.log2 <- log2(islands)  # Binary log (base = 2)
 hist(islands.ln)
 boxplot(islands.ln)
-# Note: Add 1 to avoid undefined logs when X = 0
+# Note: Add 1 to avoid undefined logs when X = 0; remember...can't take log(0)
 # x.ln <- log(x + 1)
 
 # Squaring
 # For negatively skewed variables
 # Distribution may need to be recentered so that all values are positive (0 is okay)
 
-# Ranking
+# Ranking - transformation that maintains the order but nothing else about your data 
 islands.rank1 <- rank(islands)
 hist(islands.rank1)
 boxplot(islands.rank1)
@@ -46,8 +47,8 @@ islands.rank2 <- rank(islands, ties.method = "random")
 hist(islands.rank2)
 boxplot(islands.rank2)
 
-# Dichotomizing
-# Use wisely and purposefully!
+# Dichotomizing - taking a data set & splitting it into two pieces (ie: high & low)
+# Use wisely and purposefully! Risk: lose a huge amount of info 
 # Split at 1000 (= 1,000,000 square miles)
 # ifelse is the conditional element selection
 continent <- ifelse(islands > 1000, 1, 0)
