@@ -14,3 +14,7 @@ aggregate(ToothGrowth$len ~ ToothGrowth$supp, FUN = mean)
 
 # Compare medians on len
 aggregate(ToothGrowth$len ~ ToothGrowth$supp, FUN = median)
+
+
+# Clean enviornment 
+rm(list = ls())
