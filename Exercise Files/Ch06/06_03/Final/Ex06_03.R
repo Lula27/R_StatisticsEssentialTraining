@@ -24,13 +24,14 @@ abline(lm(cars$dist ~ cars$speed),
 # "locally weighted scatterplot smoothing"
 lines(lowess (cars$speed, cars$dist), 
       col = "blue", 
-      lwd = 2)  
+      lwd = 2)  # line wide 
 
 # "car" package ("Companion to Applied Regression")
 # Has many variations on scatterplots
 install.packages("car")
 help(package = "car")
 require(car)
+# Add locally weighted scatter plot smoothing line
 # "scatterplot" has marginal boxplots, smoothers, and quantile regression intervals
 scatterplot(cars$dist ~ cars$speed,
             pch = 16,
