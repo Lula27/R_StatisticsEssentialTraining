@@ -25,15 +25,20 @@ boxplot(sportsearch$nfl ~ sportsearch$region)
 # Make the boxplot fancy!
 require("RColorBrewer")
 boxplot(sportsearch$nfl ~ sportsearch$region,
-        col = brewer.pal(8, "Pastel"),
+        col = brewer.pal(8, "Pastel1"),
         boxwex = 0.5,
         whisklty = 1,
         staplelty = 0,
         outpch = 16,
         outcol = brewer.pal(7, "Pastel2"),
-        main = "Z-score for NFL score based on region",
+        main = "US Regional Google search interest in the NFL",
         xlab = "United States Region",
-        ylab = "Z-score search for NFL")
+        ylab = "Google search for NFL (Z-score)"
+)
+
+
+# Clean up
+rm(list = ls())
 
 # use package for different stats magic
 # Transpose to create scatterplot
