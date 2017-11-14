@@ -21,6 +21,7 @@ plot(cars,
 abline(lm(cars$dist ~ cars$speed), 
        col = "darkred", 
        lwd = 2)  
+# Add locally weighted scatter plot smoothing line (lowess)
 # "locally weighted scatterplot smoothing"
 lines(lowess (cars$speed, cars$dist), 
       col = "blue", 
@@ -31,7 +32,7 @@ lines(lowess (cars$speed, cars$dist),
 install.packages("car")
 help(package = "car")
 require(car)
-# Add locally weighted scatter plot smoothing line
+
 # "scatterplot" has marginal boxplots, smoothers, and quantile regression intervals
 scatterplot(cars$dist ~ cars$speed,
             pch = 16,
