@@ -39,6 +39,7 @@ boxplot(sportsearch$nfl ~ sportsearch$region,
 
 # Clean up
 rm(list = ls())
+dev.off()
 
 # use package for different stats magic
 # Transpose to create scatterplot
