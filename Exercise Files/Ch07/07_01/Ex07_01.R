@@ -1,6 +1,6 @@
 # R Statistics Essential Training
 # Ex07_01
-# Calculating correlations
+# Calculating correlations - a basic measure of association
 
 # Find correlations for data from Swiss census taken in 1888
 
