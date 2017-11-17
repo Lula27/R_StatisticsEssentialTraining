@@ -3,6 +3,7 @@
 # Creating crosstabs for categorical variables
 # Analyzing data w/ 2 categorical variables using 
 # Chi-Squared Test for Independence aka. Crosstabs 
+# Example: using Titanic dataset, want to know survival proportions based on class
 
 # Load data
 ?Titanic

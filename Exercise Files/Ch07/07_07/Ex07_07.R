@@ -62,3 +62,7 @@ round((tchi$expected), 2)
 tchi$residuals
 # Standardized residual - df$stdres
 tchi$stdres
+
+
+# Clean up
+rm(list = ls())
