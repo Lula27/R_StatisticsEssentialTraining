@@ -44,3 +44,6 @@ b <- c(25, 45) # number of success in the groups
 prop.test(b, a, conf.level = .80)
 # 2-sample test for equality of proportions with continuity correction
 # Based on p-val: 3.381e-05, stat. sig. evidence to reject ho
+
+# Clean up
+rm(list = ls())
