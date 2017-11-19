@@ -8,11 +8,11 @@
 # Load data
 ?Titanic
 str(Titanic) # get structure 
-Titanic
+View(Titanic)
 ftable(Titanic)  # Makes "flat" table - won't use (condensed approach)
 
 # Convert table to data frame with one row per observation
-tdf <- as.data.frame(lapply(as.data.frame.table(Titanic), function(x)rep(x, as.data.frame.table(Titanic)$Freq)))[, -5]
+tdf <- as.data.frame(lapply(as.data.frame.table(Titanic), function(x)rep(x, as.data.frame.table(Titanic)$Freq)))[, -5]  # Removes the fifth column with frequencies
 tdf[1:5, ]  # Check first five rows of data
 
 # Create contingency table =  rows & columns of crosstab 
