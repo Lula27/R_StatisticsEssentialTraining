@@ -8,20 +8,20 @@
 
 # Brainstorm: most likly need proportion table - table 
 
-# Acces datafile
-mlb <- read.csv('C:\\Users\\loret\\Desktop\\DataSciencePrep\\R\\R_StatisticsEssentialTraining\\Exercise Files\\Ch07\\07_09_Challenge\\mlb2011.csv')
+# Acces datafile - don't forget header = TRUE
+rm(mlb)
+mlb <- read.csv('C:\\Users\\loret\\Desktop\\DataSciencePrep\\R\\R_StatisticsEssentialTraining\\Exercise Files\\Ch07\\07_09_Challenge\\mlb2011.csv', header = TRUE)
 
+# Review data
+mlb[1:5, ]
 
-# Place the data into a dataframe for analysis 
-mlbdf <- as.data.frame(lapply(as.data.frame(mlb), function(x)rep(x, as.data.frame.table(mlb)$Homewins)))
-
-
-
-# Get structure of dataset
-str(mlb)
-
-
-
+# Proportion test of all team names & home games 
+# What's the difference btw a prop.test & a prop.table?!
+?prop.table # useful for acessing two numerical values, not categorical 
+?prop.test
+#prop.table(mlb$HomeWins, mlb$AllWins) - won't work: Error in margin.table(x, margin) : 'x' is not an array
+prop.test(mlb$HomeWins, mlb$AllWins)
+# p-value: p-value = 0.9956
 
 # Clean up and gather ideas from Ex7_07
 rm(list = ls())
