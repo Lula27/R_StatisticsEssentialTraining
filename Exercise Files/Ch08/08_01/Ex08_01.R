@@ -27,4 +27,16 @@ barplot(breaks ~ wool*tension, data = warpbreaks)
 ?tapply # apply a function over a ragged array - 
 # Apply a function to each cell of a ragged array, that is to each (non-empty) 
 # group of values given by a unique combination of the levels of certain factors.
+data <- tapply(warpbreaks$breaks, 
+               # list two predictors
+               list(warpbreaks$wool, warpbreaks$tension),
+               mean) # function you want to get from dataset is mean
 
+# Create barchart
+barplot(data, # dataset
+        beside = TRUE, # place factors right next to each other
+        col = c("steelblue3", "thistle3"), # color scheme
+        bor = NA, # remove boarders
+        main = "Mean Number of Warp Breaks\n by tension and wool",
+        xlab = "Tension",
+        ylab = "Mean Number of Breaks")
