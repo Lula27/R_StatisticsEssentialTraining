@@ -41,8 +41,17 @@ x <- c(72, 56, 96)
 
 # Run another prop.test using these three teams
 # prop.text(succeses, total trials)
+# p-value = 0.1028 <- fail to reject null 
 prop.test(n, x)
 
+
+# Try for only two teams
+a <- c(31, 57) # successes 
+b <- c(56, 96) # trials - teams with the largest difference
+
+# Run prop test
+prop.test(a, b)
+# p-value = 0.7538 - fail to reject null
 
 # Clean up and gather ideas from Ex7_07
 rm(list = ls())
