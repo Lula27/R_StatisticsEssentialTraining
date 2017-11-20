@@ -37,6 +37,15 @@ barplot(data, # dataset
         beside = TRUE, # place factors right next to each other
         col = c("steelblue3", "thistle3"), # color scheme
         bor = NA, # remove boarders
-        main = "Mean Number of Warp Breaks\n by tension and wool",
+        main = "Mean Number of Warp Breaks\n by Tension and Wool",
         xlab = "Tension",
         ylab = "Mean Number of Breaks")
+
+# Dynamically add legend
+legend(locator(1),
+       rownames(data),
+       fill = c("Steelblue3", "thistle3"))
+
+# Clean up
+rm(list = ls())
+dev.off()
