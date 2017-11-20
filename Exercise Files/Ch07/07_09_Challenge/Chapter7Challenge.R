@@ -54,4 +54,5 @@ prop.test(a, b)
 # p-value = 0.7538 - fail to reject null
 
 # Clean up and gather ideas from Ex7_07
+detach("package:psych", unload = TRUE)
 rm(list = ls())
