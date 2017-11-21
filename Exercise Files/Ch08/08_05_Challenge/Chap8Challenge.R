@@ -58,3 +58,9 @@ scatterplotMatrix(~nba + nfl + fifa + degree | age,
                   data = data,
                   col = brewer.pal(3, "RdBu"),
                   main = "Scatterplot Matrix for Google Sports Search Data Using\n Car Package")
+
+# Clean up
+?detach
+detach('package:RColorBrewer', unload = TRUE)
+detach('package:car', unload = TRUE)
+rm(list = ls())
