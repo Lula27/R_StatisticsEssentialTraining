@@ -45,11 +45,16 @@ panel.hist <- function(x, ...)
 }
 
 
-pairs(data[1:7],
+pairs(data[1:4],
       panel = panel.smooth,
       main = "Scatterplot for Google Sports Search Data using Pairs Function",
       diag.panel = panel.hist,
       pch = 16, 
       col = brewer.pal(3, "Paired"))
 
-
+# Use the car package to quickly generate a more accessible paired scatterplot
+require("car")
+scatterplotMatrix(~nba + nfl + fifa + degree | age,
+                  data = data,
+                  col = brewer.pal(3, "RdBu"),
+                  main = "Scatterplot Matrix for Google Sports Search Data Using\n Car Package")
