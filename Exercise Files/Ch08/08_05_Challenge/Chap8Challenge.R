@@ -8,11 +8,11 @@
 # Access file 
 # Note: Call your gssdset something useful (not one of the keywords in R)
 # Save gssdset in object called gssd (Google sports search gssd)
-gssd <- read.csv('C:\\Users\\loret\\Desktop\\gssdSciencePrep\\R\\R_StatisticsEssentialTraining\\Exercise Files\\Ch08\\08_05_Challenge\\Searchgssd.csv', header = TRUE)
+gssd <- read.csv('C:\\Users\\loret\\Desktop\\DataSciencePrep\\R\\R_StatisticsEssentialTraining\\Exercise Files\\Ch08\\08_05_Challenge\\SearchData.csv', header = TRUE)
 
 # get structure 
 str(gssd)
-gssd[1:5, 1:3]  # Not bad with trying to access specific variables (nba=2, nfl=3, fifa=4, degree=8 & age=9 )
+gssd[1:5,]  # Not bad with trying to access specific variables (nba=2, nfl=3, fifa=4, degree=8 & age=9 )
 gssd[1:5, 2:4 & 8:9]
 
 # Plot to get understanding of distribution
@@ -36,9 +36,10 @@ require("car")
 # Graphing with scatterplots - Standard Scatterplot matrix
 ?pairs
 
+# Create mold for histograms 
 panel.hist <- function(x, ...)
 {
-  usr <- par('usr'); on.exit(par(usr))
+  usr <- par("usr"); on.exit(par(usr))
   par(usr = c(usr[1:2], 0, 1.5))
   h <- hist(x, plot = FALSE)
   breaks <- h$breaks; nB <- length(breaks)
@@ -46,20 +47,13 @@ panel.hist <- function(x, ...)
   rect(breaks[-nB], 0, breaks[-1], y, ...)
 }
 
-
-pairs(gssd[1:4],
+pairs(gssd[c(2:4, 8:9)],
       panel = panel.smooth,
-      main = "Scatterplot for Google Sports Search gssd using Pairs Function",
+      main = "Scatterplot Matrix for Google Search Data Using Pairs Function",
       diag.panel = panel.hist,
       pch = 16, 
-      col = brewer.pal(3, "Paired"))
+      col = "blue")
 
-# Use the car package to quickly generate a more accessible paired scatterplot
-
-scatterplotMatrix(~nba + nfl + fifa + degree | age,
-                  gssd = gssd,
-                  col = brewer.pal(3, "RdBu"),
-                  main = "Scatterplot Matrix for Google Sports Search gssd Using\n Car Package")
 
 # Clean up
 ?detach
