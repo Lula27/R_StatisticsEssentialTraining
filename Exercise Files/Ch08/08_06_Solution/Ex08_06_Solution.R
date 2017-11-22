@@ -3,29 +3,31 @@
 # Creating Scatterplot Matrices
 
 # Load data
-gsd <- read.csv("~/Desktop/R/SearchData.csv", header = TRUE)
-gsd[1:5, ]
+gsd <- read.csv('C:\\Users\\loret\\Desktop\\DataSciencePrep\\R\\R_StatisticsEssentialTraining\\Exercise Files\\Ch08\\08_05_Challenge\\SearchData.csv', header = TRUE)
 
-# Scatterplot matrix using "pairs"
+gsd[1:5, ] # observe first five rows of dataset 
+
+# Scatterplot matrix using "pairs" - Why is my paired scatterplot not appearing in plots?
 # Put histograms on the diagonal (from "pairs" help)
 panel.hist <- function(x, ...)
 {
   usr <- par("usr"); on.exit(par(usr))
-  par(usr = c(usr[1:2], 0, 1.5) )
+  par(usr = c(usr[1:2], 0, 1.5) )  # Creating a vector first two rows from usr, not sure what 0 & 1.5 refer to
   h <- hist(x, plot = FALSE)
   breaks <- h$breaks; nB <- length(breaks)
   y <- h$counts; y <- y/max(y)
   rect(breaks[-nB], 0, breaks[-1], y,  ...)
   # Removed "col = "cyan" from code block; original below
-  # rect(breaks[-nB], 0, breaks[-1], y, col = "cyan", ...) 
+   rect(breaks[-nB], 0, breaks[-1], y, col = "cyan", ...) 
 }
 
-pairs(gsd[c(2:4, 8:9)], 
+pairs(gsd[c(2:4, 8:9)],  # Select specific columns (nba, nfl, fifa, degree & age)
       panel = panel.smooth,  # Optional smoother
-      main = "Scatterplot Matrix for Google Search Data Using pairs Function",
+      main = "Scatterplot Matrix for Google Search Data Using Pairs Function",
       diag.panel = panel.hist, 
       pch = 16, 
       col = "lightgray")
+
 
 # Scatterplot matrix using "cars"
 library(car)
