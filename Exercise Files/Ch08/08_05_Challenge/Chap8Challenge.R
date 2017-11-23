@@ -55,6 +55,16 @@ pairs(gssd[c(2:4, 8:9)],
       col = "blue")
 
 
+# Scatterplot using Cars 
+library(car)
+library(RColorBrewer)
+
+scatterplotMatrix(~ nba + nfl + fifa + degree + age, 
+                  data = gssd,
+                  col = brewer.pal(3, "Set2"),
+                  main = "Scatterplot Matrix for Google Search Data Using \"car\"Package")
+
+
 # Clean up
 ?detach
 detach('package:RColorBrewer', unload = TRUE)
