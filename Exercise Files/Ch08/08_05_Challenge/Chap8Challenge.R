@@ -65,6 +65,31 @@ scatterplotMatrix(~ nba + nfl + fifa + degree + age,
                   main = "Scatterplot Matrix for Google Search Data Using \"car\"Package")
 
 
+# Create basic scatterplot to examine distribution of degree, age & region 
+# Create mold for histograms 
+panel.hist <- function(x, ...)
+{
+  usr <- par("usr"); on.exit(par(usr))
+  par(usr = c(usr[1:2], 0, 1.5))
+  h <- hist(x, plot = FALSE)
+  breaks <- h$breaks; nB <- length(breaks)
+      panel = panel.smooth,
+      main = "Scatterplot Matrix for Demographics of Google Sports Searchers",
+      diag.panel = panel.hist,
+  y <- h$counts; y <- y/max(y)
+  rect(breaks[-nB], 0, breaks[-1], y, ...)
+}
+
+pairs(gssd[c(8:10)],
+      pch = 16, 
+      col = "gray")
+
+# Plot Paired Scatterplot w/ Car package 
+scatterplotMatrix(~ degree + age + region,
+                  data = gssd,
+                  col = brewer.pal(3, "BrBG"),
+                  main = "Scatterplot Matrix for Google Search Data Using \"car\"Package")
+
 # Clean up
 ?detach
 detach('package:RColorBrewer', unload = TRUE)
