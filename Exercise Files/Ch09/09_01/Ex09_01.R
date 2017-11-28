@@ -11,4 +11,9 @@ str(USJudgeRatings)
 
 # Goal: figure out how these 10 factors affect RTEN (y = worthy of retention)
 # regressionName <- lm(y ~ a, b, c, ...)
-reg1 <- lm(RTEN ~ CONT + )
+reg1 <- lm(RTEN ~ CONT + INTG + DMNR + 
+             DECI + PREP + FAMI + ORAL +
+             WRIT + PHYS + RTEN,    # one missing comma ruined it all
+           data = USJudgeRatings)
+
+reg1
