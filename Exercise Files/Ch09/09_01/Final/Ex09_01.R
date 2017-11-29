@@ -4,10 +4,11 @@
 
 # Load data
 ?USJudgeRatings
-data(USJudgeRatings)
-USJudgeRatings[1:5, ]
+data(USJudgeRatings)  # load data 
+USJudgeRatings[1:5, ]   # read first five lines 
 
 # Basic multiple regression
+# linear model with Rten as y  
 reg1 <- lm(RTEN ~ CONT + INTG + DMNR + DILG + CFMG + 
            DECI + PREP + FAMI + ORAL + WRIT + PHYS,
            data = USJudgeRatings)
@@ -54,3 +55,4 @@ summary(regf)
 # ("Regression Modeling Strategies")
 
 rm(list = ls())  # Clean up
+dev.off()
