@@ -59,6 +59,10 @@ regf <- step(reg0, # Start with minimal model
              data = USJudgeRatings,
              trace = 0)
 summary(regf)
+
+
+# Look at the rms package! 
+?rms
               
 
 # Clean up 
