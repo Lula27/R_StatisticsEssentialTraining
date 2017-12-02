@@ -1,12 +1,13 @@
 # R Statistics Essential Training
 # Ex09_02
 # Comparing means with a two-factor ANOVA
+# ANOVA are tests for hypotheses about independent categorical variables
 
 # Load data 
 # Built-in dataset "warpbreaks"
 ?warpbreaks
 data(warpbreaks)
-boxplot(breaks ~ wool*tension, data = warpbreaks)
+boxplot(breaks ~ wool*tension, data = warpbreaks) # interaction between wool & tension - how they effect breaks 
 
 # Model with interaction
 aov1 <- aov(breaks ~ 
