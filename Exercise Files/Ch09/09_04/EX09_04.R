@@ -39,5 +39,17 @@ predict(pc)
 biplot(pc)
 
 
+# Factor Analysis - give you p-values (tell you how many factors you need to have)
+# Varimax rotation by default
+# Gives chi square test that number of factors
+# is sufficient to match data (want p > .05).
+
+
+# If we use one factor, it means our model deviates too far from observation.
+factanal(cars, 1)
+factanal(cars, 2)
+factanal(cars, 3)
+# With four factors, we see that observations don't differ significantly from model
+factanal(cars, 4)
 
 
