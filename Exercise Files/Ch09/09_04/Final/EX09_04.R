@@ -24,6 +24,12 @@ mtcars[1:5, ]
 mtcars1 <- mtcars[, c(1:4, 6:7, 9:11)]  # Select variables - drop some
 mtcars1[1:5, ]
 
+
+# R has 2 different methods for Principle Components 
+?prcomp  # Generally preferred - We use this method in example!
+?princomp  # Very slightly different method, similar to S
+
+
 # Looking at association between variables (grouping columns)
 # Principle components model using default method
 # If using entire data frame:
@@ -35,9 +41,6 @@ pc <- prcomp(mtcars1,
 # pc <- prcomp(~ mpg + cyl + disp + hp + wt + qsec + am + 
 #                gear + carb, data = mtcars, scale = TRUE)
 
-# R has 2 different methods for Principle Components 
-?prcomp  # Generally preferred
-?princomp  # Very slightly different method, similar to S
 
 # Get summary stats
 summary(pc) # importance of components - variables combined to create components
