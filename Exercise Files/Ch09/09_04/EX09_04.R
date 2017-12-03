@@ -52,4 +52,6 @@ factanal(cars, 3)
 # With four factors, we see that observations don't differ significantly from model
 factanal(cars, 4)
 
-
+# Clean up
+rm(list = ls())
+dev.off()
