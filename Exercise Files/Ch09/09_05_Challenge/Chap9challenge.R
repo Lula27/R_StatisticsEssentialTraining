@@ -11,12 +11,34 @@ statesResp <- read.csv("C:\\Users\\loret\\Desktop\\DataSciencePrep\\R\\R_Statist
 statesResp[1:5, ]
 
 # Drop runny nose (4) and save in new object/dataset
-sResp <- statesResp[, c(1:4, 6:13)]
-rm(sResp)
-sResp[1:5, ]
+# sResp <- statesResp[, c(1:4, 6:13)]
+#rm(sResp)
+#sResp[1:5, ]
 # Conduct Hierarchical Cluster Analysis 
 # Note: 5 clusters based on the column names 
 
 # Step 1: Get distance matrix (dissimilarity matrix)
-d <- dist(sResp) # Keep getting warning - N
+d <- dist(statesResp) # Keep getting warning - N
 d
+
+# Step 2: Use distance matric for clustering
+c <- hclust(d)
+c
+
+# Step 3: Plot dendrogram of clusters
+plot(c)
+
+# Step 4: Put observations in groups (choosing 4 groups)
+g5 <- cutree(c, k = 5)
+g5
+
+# Step 5: Draw boxes around clusters - see the split between clusters
+rect.hclust(c, k = 2, border = "yellow")
+rect.hclust(c, k = 3, border = "green")
+rect.hclust(c, k = 4, border = "red")
+rect.hclust(c, k = 5, border = "purple")
+
+
+# Clean up
+rm(list = ls())
+dev.off()
