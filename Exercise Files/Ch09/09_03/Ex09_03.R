@@ -49,3 +49,24 @@ rect.hclust(c, k = 2, border = "yellow")
 rect.hclust(c, k = 3, border = "blue")
 rect.hclust(c, k = 4, border = "green4")
 rect.hclust(c, k = 5, border = "red")
+
+
+# k-means clustering (k group means)
+# Created 3 clusters w/ different cases (11, 4, 17)
+km <- kmeans(mtcars1, 3)
+km
+
+# Graph based on k-means
+# Categorizes and places them into 3 different groups
+require(cluster)
+# Don't forget: detach("package:cluster", unload=TRUE)
+clusplot(mtcars1, # dataframe
+          km$cluster, # cluster data
+          color = TRUE,
+          shade = TRUE,  # Add shading to graph
+          lines = 3, # lines connecting centroids
+          labels = 2) # labels clusters & cases 
+
+rm(list = ls())
+detach("package:cluster", unload = TRUE)
+dev.off()          
