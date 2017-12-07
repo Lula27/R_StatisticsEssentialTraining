@@ -16,5 +16,6 @@ e
 
 # Descriptive Stats 
 boxplot(a)
+boxplot.stats(a)
 boxplot(b)
 
