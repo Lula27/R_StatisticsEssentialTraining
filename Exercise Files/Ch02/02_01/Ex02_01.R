@@ -27,7 +27,7 @@ plot(chickwts$feed)
 
 
 # PART 2 - Customize with your plot - jazzzzz it up!
-# Create variable as a table with the feeds variable 
+# Create variable as a table with the feeds variable - can't make this a table 
 feeds <- chickwts$feed 
 rm(feeds)
 
@@ -60,9 +60,9 @@ barplot(feeds[order(feeds)],
         
         )
 rm(list = ls()) # clear up
-
+dev.off()
 
 
 # Replicate with my own
-Start here: http://rstudio-pubs-static.s3.amazonaws.com/2277_404d9b623e0b4dcf9fe0927c38067813.html 
+browseURL('http://rstudio-pubs-static.s3.amazonaws.com/2277_404d9b623e0b4dcf9fe0927c38067813.html') 
 datasets::attitude
