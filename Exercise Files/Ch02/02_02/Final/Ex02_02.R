@@ -8,8 +8,8 @@ require("datasets")
 # ONE ROW PER CASE
 data(chickwts)
 
-# Create a table with frequencies
-feeds <- table(chickwts$feed)
+# Create a table with frequencies - do this before being able to create data visualizations 
+feeds <- table(chickwts$feed) 
 feeds
 
 # Make the pie chart with the defaults
@@ -71,4 +71,5 @@ par(oldpar)  # Restore old graphical parameters
 # rewritten; just ignore the warning messages for these.
 ?par
 
-rm(list = lm())  # Clean up
+rm(list = ls())  # Clean up
+dev.off()
