@@ -110,8 +110,9 @@ for(i in 1:4){
 }
 
 
-
-
+# Clean up
+rm(list = ls())
+dev.off()
 
 
 
