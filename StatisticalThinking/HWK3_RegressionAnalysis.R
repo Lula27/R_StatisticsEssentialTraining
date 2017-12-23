@@ -33,3 +33,34 @@ cor(statedata[,"life.exp"], statedata[,"inc"]) # 0.3402553 = weak positive corre
 plot(life.exp~inc, data=statedata, type="n")
 text(life.exp~inc, data=statedata, state.abb) # Wow! Super cool - it's AK (Alaska)...hmmmm...interesting 
 ?state.abb # character vector of 2-letter abbreviations for the state names
+
+
+
+# Step 3: Fit a simple linear regression 
+# y(life.exp) <- x(inc)
+reg1 <- lm(life.exp ~ inc, data = statedata)
+reg1 # slope estimate of inc =   7.433e-04  
+# The maganitude of this value does not mean that the effect of 
+# income on life expectance is very small. 
+# This maganitude is decided by the maganitude of the X variable and Y variable.
+summary(reg1)  # inc variable is hardly statisically significant 
+
+
+# Step 4: Sampling uncertainty in regression analysis 
+# Add AB Line 
+plot(life.exp~inc, data=statedata,
+     xlab="Income", ylab="Life Expectancy")
+abline(reg1)
+
+
+
+
+
+
+
+
+
+
+
+
+
