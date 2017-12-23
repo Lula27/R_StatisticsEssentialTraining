@@ -85,6 +85,28 @@ for(i in 1:4){
          statedata[selected.states, "life.exp"], pch = 16, col = 2)
   
   # Fit regression line using sample 
+  model.sel = lm(life.exp~inc, data = statedata[selected.states,])
+  abline(reg1, col=2)
+  
+  # Make a confidence band 
+  # step 1: calculate width of band, W
+  ww = sqrt(2*qf(0.95, 2, nrow(statedata)-2))
+  # generate plotting x values 
+  plot.x <- data.frame(inc = seq(3000, 7000, 1))
+  # generate plotting X values
+  plot.x <- data.frame(inc=seq(300, 7000, 1))
+    se.fit=T # an option to save
+    # Standard error of fitted values 
+    plot.fit <- predict(model.sel, plot.x,
+                        level=0.95, interval="confidence",
+                        se.fit=T)
+    
+  # Lines is a function to add connected lines to an existing plot
+    lines(plot.x$inc, plot.fit$fit[,1]+ww*plot.fit$se.fit, 
+          col=2, lty=2)
+    lines(plot.x$inc, plot.fit$fit[,1]-ww*plot.fit$se.fit,
+          col=2, lty=2)
+    
 }
 
 
