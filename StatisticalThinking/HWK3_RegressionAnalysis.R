@@ -54,9 +54,38 @@ abline(reg1)
 
 
 
+# Step 5: Using for loop, run identical regression analysis 
+# On 4 randomly selected samples 
 
+par(mfrow=c(2,2)) # Create panel of four plotting areas
 
-
+# for loop
+for(i in 1:4){
+  # Plot population
+  plot(life.exp~inc, data=statedata,
+       xlab="Income", ylab="Life Expectancy",
+       main=paste("Random sample", format(i)),
+       ylim=c(min(life.exp), max(life.exp)+0.3))
+  abline(reg1)
+  if(i==1){
+    legend(3030, 74.2,
+           pch = c(NA, NA, NA, 1, 16),
+           lty = c(1, 1, 2, NA, NA),
+           col = c(1, 2, 2, 1, 2), 
+           c("population truth", "sample estimate",
+             "sample confidence band",
+             "states", "sampled"),
+           cex = 0.7,
+           bty = "n"
+           )
+  }
+  # Select the sample
+  selected.states <- sample(1:50, 10)
+  points(statedata[selected.states,"inc"],
+         statedata[selected.states, "life.exp"], pch = 16, col = 2)
+  
+  # Fit regression line using sample 
+}
 
 
 
