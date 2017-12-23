@@ -44,4 +44,5 @@ boxplot(InsectSprays$count ~ InsectSprays$spray,
 # Clean up 
 detach("package:MASS", unload = TRUE)
 detach("package:RColorBrewer", unload = TRUE)
+dev.off()
 rm(list = ls())

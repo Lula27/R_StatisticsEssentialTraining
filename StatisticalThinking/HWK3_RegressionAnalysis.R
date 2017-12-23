@@ -1,0 +1,35 @@
+# Homework 3: Simple Linear Regression Using R
+
+# Overview of dataset 
+help(state.x77) # Same thing as ?state.x77
+
+
+# Make data set a dataframe 
+statedata = as.data.frame(state.x77)
+
+# 8 variables in data set
+# Population: population estimate as of July 1, 1975
+# Income: per capita income (1974)
+# Life Exp: life expectancy in years (1969-71)
+# Murder: murder and non-negligent manslaughter rate per 100,000 population (1976)
+# HS Grad: percent high-school graduates (1970)
+# Frost: mean number of days with minimum temperature below freezing (1931-1960) in capital or large city
+# Area: land area in square miles
+
+# Step 1: Modify column names 
+# Use colnames to retrieve column names/assign new names 
+colnames(statedata) = c("pop", "inc", "illit", "life.exp", "murder", "hs.grad", "frost", "area")
+
+# Step 2: Make a scatterplot - association btw life.exp & income (inc)
+# plot(y~x, data=?)
+plot(life.exp~inc, data=statedata) # looks like income has a weak positive correlation with life exp
+
+# Compute correlation btw the two variables 
+browseURL("https://www.socialresearchmethods.net/kb/statcorr.php") # info on correlation
+
+cor(statedata[,"life.exp"], statedata[,"inc"]) # 0.3402553 = weak positive correlation (-1, 1)
+
+# Identify outlier value (really high income corresponding with low life exp) - Which state is this?
+plot(life.exp~inc, data=statedata, type="n")
+text(life.exp~inc, data=statedata, state.abb) # Wow! Super cool - it's AK (Alaska)...hmmmm...interesting 
+?state.abb # character vector of 2-letter abbreviations for the state names
