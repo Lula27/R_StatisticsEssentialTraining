@@ -1,5 +1,6 @@
 # Publication Quality Base R Graphics
 # Test data set 
+browseURL("https://www.r-bloggers.com/styling-base-r-graphics/") # guide 
 
 # A: Standard base R Scatter Plot 
 
@@ -22,3 +23,5 @@ mean(iris$Petal.Length, col=iris$Species)
 # My scatter plot with petal lenght and width 
 plot(iris$Petal.Length, iris$Petal.Width, col = 
        iris$Species)
+
+
