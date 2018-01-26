@@ -29,5 +29,7 @@ mean(1,2)
 
 mean(4,4)
 
+# Clean up
+rm(list = ls())
 
 
