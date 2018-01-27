@@ -42,3 +42,37 @@ par(mar = c(3, 3, 2, 1),  # Dist from plot to side of page
     las = 1, # Rotate y-axis text
     tck = -.01, # Reduce tick length 
     xaxs = "i", yaxs = "i") # Remove plot padding 
+
+# Plot the function itself with the plot() function
+plot(iris$Sepal.Length, iris$Sepal.Width,
+     bg = iris$Species, # Fill color
+     pch = 21, # Shape: circles that can be filed 
+     xlab = "Sepal Length", ylab = "Sepal Width", # x-axis labels
+     axes = FALSE, # Don't plot axes
+     frame.plot = FALSE, # Remove the frame 
+     xlim = c(4,8), ylim = c(2, 4.5), # Limits
+     panel.first = abline(h = seq(2, 4.5, 0.5), col = "grey80"))
+
+# Add x-axis tick marks 
+at = pretty(iris$Sepal.Length)
+mtext(side = 1, text = at, at = at,
+      col = "grey20", line = 1, cex = 0.9)
+
+# Add y-axis tick marks
+at = pretty(iris$Sepal.Width)
+mtext(side = 2, text = at, at = at, col = "grey20", line = 1, cex = 0.9)
+
+# Create the legend 
+text(5, 4.2, "Setosa", col = rgb(200, 79, 178, 
+maxColorValue = 255))
+text(5.3, 2.1, "Versicolor", col = rgb(105, 147, 45,
+maxColorValue = 255))
+text(7, 3.7, "Virginica", col = rgb(85, 130, 169, 
+maxColorValue = 255))
+
+# Plot the title
+title("Scatter plot of Iris Sepal width and length", adj = 1,
+      cex.main = 0.8, font.main = 2, col.main = "black")
+
+dev.off()
+
