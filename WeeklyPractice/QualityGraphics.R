@@ -25,3 +25,9 @@ plot(iris$Petal.Length, iris$Petal.Width, col =
        iris$Species)
 
 
+# Problem: there may be some points in the scatter plot sitting on top of each other 
+# Fixing the problem - jiggle points (move them around) using jitter() function 
+iris$Sepal.Length = jitter(iris$Sepal.Length)
+iris$Sepal.Width = jitter(iris$Sepal.Width)
+
+# Select nicer colors 
