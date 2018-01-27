@@ -30,4 +30,15 @@ plot(iris$Petal.Length, iris$Petal.Width, col =
 iris$Sepal.Length = jitter(iris$Sepal.Length)
 iris$Sepal.Width = jitter(iris$Sepal.Width)
 
-# Select nicer colors 
+# Select nicer colors with palette from "I want hue" website 
+alpha = 150  # Transparent points
+palette(c(rgb(200, 79, 178, alpha = alpha, maxColorValue = 255),
+          rgb(105, 147, 45, alpha = alpha, maxColorValue = 255),
+          rgb(85, 130, 169, alpha = alpha, maxColorValue = 255)))
+
+# Using par() function, alter some plot characteristics 
+par(mar = c(3, 3, 2, 1),  # Dist from plot to side of page
+    mgp = c(2, 0.4, 0), # Dist plot to label
+    las = 1, # Rotate y-axis text
+    tck = -.01, # Reduce tick length 
+    xaxs = "i", yaxs = "i") # Remove plot padding 
