@@ -57,3 +57,24 @@ filename <- file.path(dir, "extdata/femaleMiceWeights.csv")
 
 fmweight <- read.csv(filename)  # access dataset 
 View(fmweight)
+
+# Overview of dataset: first 6 rows 
+head(fmweight)
+tail(fmweight)
+
+browseURL("http://genomicsclass.github.io/book/pages/dplyr_intro.html")
+# Focus on just the bodyweight (second column) for mice on the chow diet 
+
+# Access dplyr library
+library(dplyr)
+
+chow <- filter(fmweight, Diet=="chow")
+View(chow)
+head(chow)
+
+# Select bodyweights for mice with chow diet 
+# Select only column with the values: 
+cweights <- select(chow, Bodyweight)
+head(cweights)
+View(cweights)
+
