@@ -122,3 +122,8 @@ head(asleep)
 mean(asleep)
 
 ?summarize
+summarize(asleep)
+
+# Figure out how to use summarize 
+browseURL("https://www.r-bloggers.com/using-r-quickly-calculating-summary-statistics-with-dplyr/")
+
