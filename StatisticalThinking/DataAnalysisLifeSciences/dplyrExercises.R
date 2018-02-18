@@ -102,6 +102,23 @@ nrow(msleep) # number of rows in dataset
 
 library(dplyr)
 
-apes <- filter(msleep, order=="Primates") %>% select(name) #%>% unlist
+apes <- filter(msleep, order=="Primates") %>% select(name) #%>% unlist - changes from dataframe to vector
 View(apes)
 nrow(apes) # 12 rows 
+
+class(apes)
+
+# select sleep_total for apes 
+apesleep <- filter(msleep, order=="Primates") %>% select(name, sleep_total)
+View(apesleep)
+class(apesleep)
+
+# Calculate average amount of sleep for primates 
+# Since mean() requires a vector, use unlist to get vectorized sleep_total 
+asleep <- filter(msleep, order=="Primates") %>% select(sleep_total) %>% unlist
+head(asleep)
+
+# Get mean of vectorized sleep data 
+mean(asleep)
+
+?summarize
