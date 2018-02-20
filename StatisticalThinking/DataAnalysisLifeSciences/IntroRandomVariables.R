@@ -13,4 +13,9 @@ tail(fmweight)
 require(dplyr)
 control <- filter(fmweight, Diet=="chow") %>% select(Bodyweight) %>% unlist # select individual values of mice on the chow diet as the control
 treatment <- filter(fmweight, Diet=="hf") %>% select(Bodyweight) %>% unlist # select individual values of mice on the chow diet as the treatment (what we're looking to test)
-print(treatment)
+print(mean(treatment)) 
+
+
+# difference between means for treatment & control 
+obsdiff <- mean(treatment) - mean(control)
+print(obsdiff) 
