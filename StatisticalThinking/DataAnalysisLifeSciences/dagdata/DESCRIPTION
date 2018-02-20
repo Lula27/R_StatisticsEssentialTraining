@@ -1,0 +1,19 @@
+Package: dagdata
+Title: Data package for PH525x series: Data Analysis for Genomics
+Version: 1.1
+Date: 2015-01-13
+Author: Michael Love and Rafael Irizarry
+Maintainer: Michael Love <mlove@jimmy.harvard.edu>
+Description: Data Analysis for Genomics datasets
+License: GPL-3
+Built: R 3.4.0; ; 2018-02-17 23:45:55 UTC; windows
+RemoteType: github
+RemoteHost: https://api.github.com
+RemoteRepo: dagdata
+RemoteUsername: genomicsclass
+RemoteRef: master
+RemoteSha: b4861304317c976c4cc4b1a1641de89a24e4556f
+GithubRepo: dagdata
+GithubUsername: genomicsclass
+GithubRef: master
+GithubSHA1: b4861304317c976c4cc4b1a1641de89a24e4556f

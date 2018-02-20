@@ -1,6 +1,7 @@
 # Week 1: dplyr Exercise 
 # Overview: explore new dataset related to mammalian sleep 
 # Sources 
+browseURL("http://genomicsclass.github.io/book/") # book link 
 browseURL("https://github.com/genomicsclass/labs/blob/master/intro/dplyr_tutorial.Rmd")
 
 # dpylr = powerful R-package that transforms & summarizes tabular data with rows and columns
@@ -127,3 +128,5 @@ summarize(asleep)
 # Figure out how to use summarize 
 browseURL("https://www.r-bloggers.com/using-r-quickly-calculating-summary-statistics-with-dplyr/")
 
+# Clear stuff 
+rm(list = ls())
