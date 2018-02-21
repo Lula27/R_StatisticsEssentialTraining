@@ -29,3 +29,15 @@ population <- unlist(fcontrol)
 population
 
 
+# Sample 12 mice three times for the control 
+control <- sample(population, 12)
+control
+
+# Get the average of the sample 
+mean(control)
+
+control <- sample(population, 12)
+mean(control)
+
+control <- sample(population, 12)
+mean(control)
