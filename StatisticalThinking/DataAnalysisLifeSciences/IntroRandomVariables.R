@@ -19,3 +19,13 @@ print(mean(treatment))
 # difference between means for treatment & control 
 obsdiff <- mean(treatment) - mean(control)
 print(obsdiff) 
+
+
+fcontrol <- read.csv("C:\\Users\\loret\\Desktop\\DataSciencePrep\\R\\R_StatisticsEssentialTraining\\StatisticalThinking\\DataAnalysisLifeSciences\\extdata\\femaleControlsPopulation.csv")
+View(fcontrol)
+
+# turn dataset into numeric 
+population <- unlist(fcontrol)
+population
+
+
