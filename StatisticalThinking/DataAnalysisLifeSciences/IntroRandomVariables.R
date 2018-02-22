@@ -41,3 +41,9 @@ mean(control)
 
 control <- sample(population, 12)
 mean(control)
+
+# The Null Hypothesis 
+## 12 control mice 
+treatment <- sample(population, 12)
+print(treatment) - mean(control)
+
