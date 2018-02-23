@@ -96,4 +96,36 @@ mean(null >= obsdiff)# 0.0116
 # p-value: When there is no diet effect, we see a difference as big as the one we observed only 1.5% of the time.
 # I think in my case, 1.2% of the time...
 
+# Distributions
+# distribution - compact description of many numbers 
 
+# So you measured all the heights of all men on earth. 
+# Explain your collected data to an alien visiting earth!
+
+# Access dataset 
+
+install.packages("UsingR")
+require(UsingR)
+?UsingR
+x <- father.son$fheight
+
+# Explaination 1: list data to alien 
+# 10 randomly selected heights of 1,078
+round(sample(x,10),2) # varies each time 
+
+
+# Cumulative Distribution Function
+# Visualize a distribution 
+# Cumulative distribution function (CDF): F(a) == Pr(x <= a) - theoretical
+# empirical CDF (ECDF): when CDF is derived from data 
+
+smallest <- floor(min(x)) # round min(x) down
+largest <- ceiling(max(x)) # round max(x) up
+values <- seq(smallest, largest, len=300)
+heightecdf <- ecdf(x)
+
+# Plot empirical cumulative distribution function
+plot(values, heightecdf(values), type = "l", # type = letter l
+     xlab = "a (Height in inches)", ylab = "Pr(x <= a)")  
+# Plot shows that probability of an individual male being shorter than 75 is 1; shorter than 60, around 0 : Pr(x <= a)
+# Most men measure between (65 - 70 inches)
