@@ -70,3 +70,30 @@ mean(control) # 23.42333
 
 # The Null Hypothesis 
 
+# Overview: randomly sample 24 control mice
+# Give them the same diet. 
+# Record difference in mean btw 2 randomly split groups of 12 & 12 
+
+# 12 control mice
+control <- sample(population$Bodyweight,12) 
+treatment <- sample(population$Bodyweight,12) 
+mean(treatment) - mean(control) # 0.9708333 
+
+# Do it 10,000X! Use for-loop.
+n <- 10000
+null <- vector("numeric", n)
+
+for (i in 1:n) {
+  control <- sample(population$Bodyweight,12) 
+  treatment <- sample(population$Bodyweight,12) 
+  null[i] <- mean(treatment) - mean(control) # values in null form null distribution
+}
+
+# What percent of the 10,000 are bigger than obsdiff?
+# From output below, only a small % of the 10,000 simulations - 0.0116
+mean(null >= obsdiff)# 0.0116
+
+# p-value: When there is no diet effect, we see a difference as big as the one we observed only 1.5% of the time.
+# I think in my case, 1.2% of the time...
+
+
