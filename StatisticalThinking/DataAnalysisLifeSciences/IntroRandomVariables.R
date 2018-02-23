@@ -1,6 +1,7 @@
 # Introduction to Random Variables
 browseURL("http://genomicsclass.github.io/book/pages/random_variables.html") # book source
-
+# Statistical Inference is the mathematical theory that permits you to approximate this with only the data from your sample.
+# i.e. the original 24 mice.
 
 # Goal: compute p-value for difference in diet for female mice using two different meal plans
 
@@ -168,3 +169,24 @@ for (i in 1:n) {
 
 # Interpretation: we can see that values as large as obsdiff (3.02) are relatively rare
 
+# Get better look but seeing frequncy distribution against obsdiff value
+hist(null, freq = TRUE)
+abline(v=obsdiff, col="red", lwd=2) # most values under 3 
+
+
+# Compute p-value for difference in diet for mice using normal distribution 
+# Normal Distribution 
+# A probability distribution commonly found in nature
+# AKA: Bell Curve, Gaussian Distribution or Normal Distribution 
+
+# Goal: compute the proportion of values below a value x with pnorm(x,mu,sigma)
+# without knowing all the values
+
+normalapprox <- 1 - pnorm(obsdiff, mean(null), sd(null))
+normalapprox # 0.01258094
+
+# Setting the random seed
+# One way to ensure that results of values produced using a random number generator 
+# do not change is by setting R's random number generation seed.
+?set.seed
+set.seed(1) # example 
