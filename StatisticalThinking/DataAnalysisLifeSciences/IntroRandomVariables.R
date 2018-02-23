@@ -31,7 +31,10 @@ print(mean(treatment)) # 26.83417
 # Looks like mean of treatment is 10% more than mean of control.
 # Average of mice on hf diet is 10X greater than mice on chow. 
 obsdiff <- (mean(treatment)) - (mean(control))
-obsdiff # 3.020833 
+obsdiff # 3.020833
+
+# Null hypothesis1: mean of treatment != mean of control (2 sided test)
+# Null hypothesis2: mean of treatment > mean of control 
 
 # This looks good but it's inaccurate. 
 # Because of variability [Every time we repeat this experiment, we get a different value.]
@@ -79,7 +82,7 @@ control <- sample(population$Bodyweight,12)
 treatment <- sample(population$Bodyweight,12) 
 mean(treatment) - mean(control) # 0.9708333 
 
-# Do it 10,000X! Use for-loop.
+# Do it 10,000X! Use for-loop. Is this a Monte Carlo simulation?
 n <- 10000
 null <- vector("numeric", n)
 
@@ -142,5 +145,26 @@ bins <- seq(smallest, largest)
 hist(x, breaks = bins, xlab = "Height (in inches)", main = "Adult men heights") 
 # From plot, we can see about 70 individuals over six feet (72 inches) tall
 
-# Probability distribution 
+# Probability distribution: describe probabilities 
+# null distribution: distribution of difference in mean of mouse weights when null hypothesis is true 
+# p-value: probability of observing a value as large as we did previously 
+
+# Goal: repeat previous experiement (for loop) but add point to figure after each trial of experiment
+
+n <- 100
+install.packages("rafalib")
+require(rafalib)
+nullplot(-5, 5, 1, 30, xlab = "Observed differences (grams)", ylab = "Frequency")
+totals <- vector("numeric", 11)
+for (i in 1:n) {
+  control <- sample(population$Bodyweight,12) 
+  treatment <- sample(population$Bodyweight,12) 
+  nulldiff <- mean(treatment) - mean(control)
+  j <- pmax(pmin(round(nulldiff) + 6,11),1)
+  totals[j] <- totals[j] + 1
+  text(j-6, totals[j], pch=15, round(nulldiff,1))
+  ##if(i < 15) Sys.sleep(1) ##You can add this line to see values appear slowly
+}
+
+# Interpretation: we can see that values as large as obsdiff (3.02) are relatively rare
 
