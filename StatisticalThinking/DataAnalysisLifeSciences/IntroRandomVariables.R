@@ -122,10 +122,25 @@ round(sample(x,10),2) # varies each time
 smallest <- floor(min(x)) # round min(x) down
 largest <- ceiling(max(x)) # round max(x) up
 values <- seq(smallest, largest, len=300)
-heightecdf <- ecdf(x)
+heightecdf <- ecdf(x) # ecdf is a function that returns a function
 
 # Plot empirical cumulative distribution function
 plot(values, heightecdf(values), type = "l", # type = letter l
      xlab = "a (Height in inches)", ylab = "Pr(x <= a)")  
 # Plot shows that probability of an individual male being shorter than 75 is 1; shorter than 60, around 0 : Pr(x <= a)
 # Most men measure between (65 - 70 inches)
+
+# Histograms - much more popluar than ecdf 
+# Benefits: 1. get intervals between values
+# 2. Distinguish different types (families)
+
+# Plot basic histogram of population of male heights 
+hist(x) # matches with ecdf that most men fall between 65 & 70 inches/ few shorter than 60 inches or taller than 75 inches - much easier to understand 
+
+# More detailed histogram 
+bins <- seq(smallest, largest)
+hist(x, breaks = bins, xlab = "Height (in inches)", main = "Adult men heights") 
+# From plot, we can see about 70 individuals over six feet (72 inches) tall
+
+# Probability distribution 
+
