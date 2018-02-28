@@ -190,3 +190,26 @@ normalapprox # 0.01258094
 # do not change is by setting R's random number generation seed.
 ?set.seed
 set.seed(1) # example 
+
+# Clean up 
+rm(list=ls())
+dev.off()
+
+# Clear libraries 
+detach("package:UsingR", unload = TRUE)
+
+
+
+# Exercises 
+# 1
+x <- unlist(population) # change from dataset to numbers 
+mean(x) # get average 
+
+# 2 
+?sample
+
+sample(x, 5, replace=TRUE) # take random sample of size 5 with set.seed(1)
+
+
+
+
