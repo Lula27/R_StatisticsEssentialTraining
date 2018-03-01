@@ -208,8 +208,31 @@ mean(x) # get average
 # 2 
 ?sample
 
-sample(x, 5, replace=TRUE) # take random sample of size 5 with set.seed(1)
+s <- sample(x, 5, replace=TRUE) # take random sample of size 5 with set.seed(1)
 
+diff <- mean(s) - mean(x)
+diff
+abs(diff)
 
+# 3 
+# Repeat with set seed to 5
+set.seed(5)
 
+s2 <- sample(x, 5, replace = TRUE)
+s2
 
+diff2 <- mean(s2) - mean(x)
+abs(diff2)
+
+# 5 : for-loop take random sample of 5 mice 1,000X; save these averages
+# What percent of these 1,000 averages are more than 1 ounce away from the average of x ?
+set.seed(1)
+
+n = 1000
+
+# for 
+for(i in 1:n) {
+  a <- sample(x, 5, replace=TRUE)
+}
+
+print(a)
