@@ -203,7 +203,7 @@ detach("package:UsingR", unload = TRUE)
 # Exercises 
 # 1
 x <- unlist(population) # change from dataset to numbers 
-mean(x) # get average 
+ax <- mean(x) # get average 
 
 # 2 
 ?sample
@@ -236,3 +236,18 @@ for(i in 1:n) {
 }
 
 print(a)
+
+# 5 - 5.	Set the seed at 1, then using a for-loop take a random sample of 5 mice 1,000 times.
+set.seed(1) 
+
+i <- 1:1000
+rm(i)
+
+for (i in 1:1000)
+{
+  s1 <- sample(fmweight$Bodyweight,5)
+  print((s1)) 
+}
+
+
+# What percent of these 1,000 averages are more than 1 ounce away from the average of x ?

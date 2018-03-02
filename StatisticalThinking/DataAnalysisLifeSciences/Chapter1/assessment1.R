@@ -166,3 +166,6 @@ sample(hf, size = 1)
 
 # Why is it that right after I ran the code for set seed,
 # I get the right number? But before/after, keep getting random numbers?
+
+# Clean workspace 
+rm(list = ls())
