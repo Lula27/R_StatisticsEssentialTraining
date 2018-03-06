@@ -318,3 +318,38 @@ away1 # created a bullion (anything greater than 1 is true)
 
 # get proportion with mean 
 mean(away1) # 0.498
+
+# Set seed = 1
+set.seed(1)
+# increase it from 1,000 to 10,000
+n2 <- 10000
+nulls3 <- vector("numeric", n)
+for(i in 1:n){
+  control <- sample(population$Bodyweight, 5)
+  nulls3[i] <- mean(control)
+}
+
+d2 <- abs(nulls3 - ax)
+
+away2 <- d2 > 1 
+mean(away2) # proportion of these 10,000 averages are more than 1 gram away from the average of x: 0.498
+
+# Third time is the charm!
+# Set seed = 1
+set.seed(1)
+# increase it from 1,000 to 10,000
+n <- 1000
+nulls4 <- vector("numeric", n)
+for(i in 1:n){
+  control <- sample(population$Bodyweight, 50)
+  nulls4[i] <- mean(control)
+}
+
+d3 <- abs(nulls4 - ax)
+
+away3 <- d3 > 1 
+mean(away3)
+
+# What proportion of these 1,000 averages are more than 1 gram away from the average of x ? 0.019
+
+# Does this mean as the sample increases the p-value goes down? 
