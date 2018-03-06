@@ -272,4 +272,38 @@ for (i in 1:1000)
 }
 
 
+# Null Distributions Exercises - 1 
+# Create and store vector 
+n <- 10000
+nulls <- vector("numeric", n)
+for(i in 1:n){
+  control <- sample(population$Bodyweight, 12)
+  treatment <- sample(population$Bodyweight, 12)
+  nulls[i] <- mean(treatment)-mean(control)
+}
+
+hist(nulls) 
+
+# Set the seed at 1, then using a for-loop take a random sample of 5 mice 1,000 times.  
+set.seed(1)
+
+n <- 1000
+nulls2 <- vector("numeric", n)
+for(i in 1:n){
+  control <- sample(population$Bodyweight, 5)
+  nulls2[i] <- mean(control)
+}
+
+length(nulls2) # 1000
+
+min(nulls2) # 20.16
+
+max(nulls2) # 29.496
+
+length(ax)
+
+diff <- ax - nulls2
+
+hist(diff)
+
 
