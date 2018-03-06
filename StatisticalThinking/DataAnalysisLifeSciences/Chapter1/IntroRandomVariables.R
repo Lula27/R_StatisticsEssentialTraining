@@ -1,5 +1,8 @@
 # Introduction to Random Variables
 browseURL("http://genomicsclass.github.io/book/pages/random_variables.html") # book source
+browseURL("https://www.r-bloggers.com/proportions-with-mean/") # proportions with mean
+
+
 # Statistical Inference is the mathematical theory that permits you to approximate this with only the data from your sample.
 # i.e. the original 24 mice.
 
@@ -302,8 +305,16 @@ max(nulls2) # 29.496
 
 length(ax)
 
-diff <- ax - nulls2
+# Create histogram for nulls2 - add abline for ax 
+hist(nulls2)
+abline(v = ax, col = "red", lwd = 2) # shows me where the mean of x is (23.89338)
+ax
 
-hist(diff)
+# What proportion of these 1,000 averages are more than 1 gram away from the average of x ?
+d <- abs(ax - nulls2) 
 
+away1 <- d > 1 
+away1 # created a bullion (anything greater than 1 is true)
 
+# get proportion with mean 
+mean(away1) # 0.498
