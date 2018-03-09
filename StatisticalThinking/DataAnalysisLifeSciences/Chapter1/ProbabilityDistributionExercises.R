@@ -25,8 +25,21 @@ plot(lifeExp ~ gdpPercap, gap_with_colors,
 # Goals: select countries specifically in 1953 
 # Using mean(x <= a), compute F 
 
+View(gapminder)
+
+# Create new data frame 
+mydata <- data.frame("count" = gapminder$country, 
+                     "yr" = gapminder$year, 
+                     "life" = gapminder$lifeExp) 
+
+View(mydata)
+
 # What is the proportion of countries in 1952 that have a life expectancy less than or equal to 40?
 countriesy52 <- unlist(gapminder, gapminder$year == 1957
                      & gapminder$lifeExp <= 40 )
 
 head(countriesy52)
+
+# Clean up 
+rm(list = ls())
+dev.off()
