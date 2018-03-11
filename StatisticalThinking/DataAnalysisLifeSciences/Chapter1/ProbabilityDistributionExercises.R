@@ -1,3 +1,27 @@
+# Cumulative Distribution Function  <- F(a) === Pr(x <= a); theoretically derived 
+# Empirical CDF (ECDF) <- CDF derived from data 
+
+library(UsingR)
+x <- father.son$fheight
+
+# select 10 random heights of 1,078 
+round(sample(x,10),1)
+
+# Plot F(a) vs a 
+
+smallest <- floor( min(x))
+largest <- ceiling(max(x))
+values <- seq(smallest, largest, len=300)
+heightecdf <- ecdf(x)
+# For some reson, this results in an error: 
+plot(values, heightecdf(values),type = "1" 
+     xlab = "a (Height in inches)", ylab = "Pr(x <= a)") 
+
+# Creates bubbly plot 
+plot(values, heightecdf(values), 
+     xlab = "a (Height in inches)", ylab = "Pr(x <= a)") 
+
+
 # Explore data set from Gapminder 
 # empirical cumulative distribution function (or empirical cdf or empirical distribution function) is the function F(a) for any a, which tells you the proportion of the values which are less than or equal to a.empirical cumulative distribution function (or empirical cdf or empirical distribution function) is the function F(a) for any a,
 # which tells you the proportion of the values which are less than or equal to a.
