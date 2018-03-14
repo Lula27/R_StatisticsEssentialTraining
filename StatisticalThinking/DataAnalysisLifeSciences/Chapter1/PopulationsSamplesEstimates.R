@@ -30,3 +30,17 @@ length(hfPopulation)
 # population parameters = quantities that can be obtained from population 
 # ie: mean, variance, standard deviation
 
+rm(list = ls())
+
+# Exercises 
+# How to remove nulls in R
+dat <- na.omit(dat)
+View(dat)
+str(dat) # get structure (overview) of dataset 
+
+# Using dplyr, create vector x w/ body weights of all males in control diet 
+x <- filter(dat, Sex == "M" 
+            & Diet == "chow") %>%
+  select(Bodyweight) %>% unlist 
+x
+mean(x) # population average = 30.96381 
