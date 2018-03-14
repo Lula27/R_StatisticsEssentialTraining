@@ -14,12 +14,19 @@ largest <- ceiling(max(x))
 values <- seq(smallest, largest, len=300)
 heightecdf <- ecdf(x)
 # For some reson, this results in an error: 
-plot(values, heightecdf(values),type = "1" 
+plot(values, heightecdf(values),type = "1", 
      xlab = "a (Height in inches)", ylab = "Pr(x <= a)") 
 
 # Creates bubbly plot 
 plot(values, heightecdf(values), 
      xlab = "a (Height in inches)", ylab = "Pr(x <= a)") 
+
+# Histogram much more useful than ecdf
+hist(x)
+
+# Specify bins and create better labels
+bins <- seq(smallest, largest)
+hist(x, breaks = bins, xlab = "Height (in inches)", main = "Adult men heights")
 
 
 # Explore data set from Gapminder 
@@ -59,8 +66,14 @@ mydata <- data.frame("count" = gapminder$country,
 View(mydata)
 
 # What is the proportion of countries in 1952 that have a life expectancy less than or equal to 40?
-countriesy52 <- unlist(gapminder, gapminder$year == 1957
-                     & gapminder$lifeExp <= 40 )
+# Use ecdf() function 
+lfourty <- mydata[mydata$yr == 1952, ]
+lfourty
+
+y <- lfourty$life
+
+# Plot ecdf of y 
+plot(ecdf(y)) 
 
 head(countriesy52)
 
