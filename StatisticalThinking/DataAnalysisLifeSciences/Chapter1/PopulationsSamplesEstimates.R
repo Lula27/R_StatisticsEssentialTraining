@@ -1,5 +1,5 @@
 # Statistical Inference 
-# Populations, Samples and Estimates
+# Populations, Samples and Estimates - 8% 
 
 
 # Step 1: understand population of interest 

@@ -41,6 +41,9 @@ gapminder
 
 ?gapminder 
 
+# access dplyr 
+require(dplyr)
+
 # Plot life expectancy for Africa and Europe
 gap_with_colors <- data.frame(gapminder,
                               cc = I(country_colors[match(gapminder$country, 
@@ -68,9 +71,17 @@ View(mydata)
 # What is the proportion of countries in 1952 that have a life expectancy less than or equal to 40?
 # Use ecdf() function 
 lfourty <- mydata[mydata$yr == 1952, ]
-lfourty
+View(lfourty)
 
-y <- lfourty$life
+# Make dataframe into a vector using ulist 
+x<- unlist(lfourty$life) 
+
+# Plot histogram of x 
+hist(x)
+# looks like most people in the world in 1957 died in their late 30s, early 40s 
+mean(x) # average life expectancy = 49.05
+median(x) # median is 45.13 
+
 
 # Plot ecdf of y 
 plot(ecdf(y)) 
