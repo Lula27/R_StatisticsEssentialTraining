@@ -78,15 +78,37 @@ x<- unlist(lfourty$life)
 
 # Plot histogram of x 
 hist(x)
+abline(v=40, col="red") # red line at 40 
+
+
 # looks like most people in the world in 1957 died in their late 30s, early 40s 
 mean(x) # average life expectancy = 49.05
 median(x) # median is 45.13 
 
+# What is the proportion of countries in 1952 that have a life expectancy less than or equal to 40?
 
-# Plot ecdf of y 
-plot(ecdf(y)) 
+# get ecdf of x (proportion of counties...)
 
-head(countriesy52)
+# Method 1 
+a <- 40 
+
+mean(x <= a) # 0.2887324  - tells me that ~29% of life expectancies in the world in 1957 were less than 40 years 
+
+# Method 2
+ecdf(x) # Got this, not sure what to make of it: x[1:142] = 28.801,     30, 30.015,  ...,  72.49,  72.67
+
+?ecdf
+
+
+# What is the proportion of countries in 1952 that have a life expectancy between 40 and 60 years?
+mean(x <= 60) - mean(x <= 40) # 0.4647887
+
+
+
+# Plot proportions of countries with life expectancy 'q' for a range of different years
+plot(ecdf(x)) # notice at 40 years, Fn(x) is 0.2 so around mean(x <= a) # 0.2887324 
+
+
 
 # Clean up 
 rm(list = ls())
