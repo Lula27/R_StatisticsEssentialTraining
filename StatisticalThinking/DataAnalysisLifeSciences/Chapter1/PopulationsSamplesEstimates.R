@@ -38,9 +38,79 @@ dat <- na.omit(dat)
 View(dat)
 str(dat) # get structure (overview) of dataset 
 
-# Using dplyr, create vector x w/ body weights of all males in control diet 
+#1.  Using dplyr, create vector x w/ body weights of all males in control diet 
 x <- filter(dat, Sex == "M" 
             & Diet == "chow") %>%
   select(Bodyweight) %>% unlist 
 x
-mean(x) # population average = 30.96381 
+mean(x) # population bodyweight average for male mice on chow diet = 30.96381 
+
+# access rafalib package
+library(rafalib)
+?popsd
+
+#2. compute population standard deviation 
+# na.rm (remove null values = False, irrelavant since no null values in ds anyway)
+popsd(x, na.rm = FALSE) # 4.420501 
+
+#3. Set seed = 1; take random sample of size 35 from x 
+
+set.seed(1)
+
+rs <- sample(x, 25) # random sample of 25 
+
+mean(rs) # 32.0956 is average bodyweight for male mice in random sample of 25 on chow diet
+
+#4. Use dplyr to create vector y with body weight of all males on high fat (hf) diet 
+y <- filter(dat, Sex == "M"
+            & Diet == "hf") %>%
+  select(Bodyweight) %>% unlist 
+y
+mean(y) # population bodyweight average for male mice on high fat diet = 34.84793
+
+# 5 compute population standard deviation using rafalib package
+popsd(y) # population standard deviation for bodyweight for hf diet: 5.574609 
+
+# 6. Set seed at 1 and take random sample of size 25 from y 
+set.seed(1)
+rshf <- sample(y, 25)
+mean(rshf) # 34.4984 is average bodyweight for male mice in random sample of 25 on hf diet
+
+# 7. What is the difference in absolute value between mean of two samples?
+abs(mean(rshf) - mean(rs)) # 2.4028 is difference btw random sample means
+abs(mean(x) - mean(y)) # 3.884116 is difference population means 
+
+# 8. Repeat the above for females - What is the difference in absolute values btw 
+# sample means & population means 
+a <- filter(dat, Sex == "F" 
+            & Diet == "chow") %>%
+  select(Bodyweight) %>% unlist 
+Xbar <- mean(a)
+Xbar # population mean for female mice on chow diet is  23.89338 
+
+b <- filter(dat, Sex == "F" 
+            & Diet == "hf") %>%
+  select(Bodyweight) %>% unlist 
+Ybar <- mean(b)
+Ybar # population mean for female mice on high fat diet is 26.2689 
+
+# Difference btw population means 
+abs(Xbar - Ybar) # 2.375517 
+
+# Now, take samples and find difference in means 
+set.seed(1)
+s1 <- sample(a, 25)
+ms1 <- mean(s1)
+ms1 # sample mean for female mice on chow diet: 23.1692 
+
+set.seed(1)
+s2 <- sample(b, 25)
+ms2 <- mean(s2)
+ms2 # sample mean for female mice on high fat diet: 26.2812
+
+# Difference in samples 
+abs(ms2 - ms1) # 3.112 
+
+# 9. For the females, our sample estimates were closer to the population difference than with males. 
+# What is a possible explanation for this? 
+# A) The population variance of the females is smaller than that of the males; thus, the sample variable has less variability.
