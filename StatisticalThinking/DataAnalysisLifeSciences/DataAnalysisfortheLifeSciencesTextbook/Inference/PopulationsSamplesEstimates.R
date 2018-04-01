@@ -114,3 +114,7 @@ abs(ms2 - ms1) # 3.112
 # 9. For the females, our sample estimates were closer to the population difference than with males. 
 # What is a possible explanation for this? 
 # A) The population variance of the females is smaller than that of the males; thus, the sample variable has less variability.
+
+
+# Clean up 
+rm(list = ls())
