@@ -172,3 +172,7 @@ qqline(controlPopulation)
 # weakness of this approximation. In the next section, we will see that
 # for this particular dataset the t-distribution works well even for
 # sample sizes as small as 3. 
+
+# Clear workspace
+rm(list = ls())
+dev.off()
