@@ -34,3 +34,14 @@ library(rafalib) # Hey! The professor guy created this R library :)
 mypar(1,2)
 hist(experimentalPop) # looks like there's a right tail skew 
 hist(controlPop) # looks a bit more normally distributed than the distribution of the experimental group (hf diet female mice)
+
+# Use qq-plots to confirm that the distributions are relatively normal 
+mypar(1,2)
+qqnorm(experimentalPop)
+qqline(experimentalPop, col = 2) # more points off line - expecially as theoretical quantiles increase 
+
+qqnorm(controlPop)
+qqline(controlPop, col = 2) # more points on line 
+
+# Excersises 
+
