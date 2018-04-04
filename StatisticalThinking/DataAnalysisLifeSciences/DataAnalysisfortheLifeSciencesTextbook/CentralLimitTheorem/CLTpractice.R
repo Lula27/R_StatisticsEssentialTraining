@@ -43,5 +43,12 @@ qqline(experimentalPop, col = 2) # more points off line - expecially as theoreti
 qqnorm(controlPop)
 qqline(controlPop, col = 2) # more points on line 
 
-# Excersises 
+# Clean workspace
+dev.off()
+rm(list = ls())
 
+# Excersises 
+# 4.
+y <- filter(dat, Sex == "M" & Diet == "chow") %>% 
+  select(Bodyweight) %>% unlist 
+y
