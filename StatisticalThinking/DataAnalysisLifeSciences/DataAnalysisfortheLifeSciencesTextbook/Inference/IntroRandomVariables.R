@@ -96,6 +96,9 @@ for (i in 1:n) {
   null[i] <- mean(treatment) - mean(control) # values in null form null distribution
 }
 
+control
+treatment
+null
 # What percent of the 10,000 are bigger than obsdiff?
 # From output below, only a small % of the 10,000 simulations - 0.0116
 mean(null >= obsdiff)# 0.0116
@@ -353,3 +356,5 @@ mean(away3)
 # What proportion of these 1,000 averages are more than 1 gram away from the average of x ? 0.019
 
 # Does this mean as the sample increases the p-value goes down? 
+
+rm(list = ls())
