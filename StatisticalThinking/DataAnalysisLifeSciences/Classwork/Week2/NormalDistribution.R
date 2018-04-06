@@ -54,3 +54,44 @@ for (i in 1:n) {
 }
 
 hist(avgs50) 
+
+
+
+
+
+# 2. For the last set of averages, the ones obtained from a sample size of 50, what proportion are between 23 and 25? 
+# meaning distribution in histogram: 97.6% of values fall btw 23 & 25 
+abs((mean(avgs50 <= 23) - mean(avgs50 <= 25)))  
+
+
+# 3. Now ask the same question of a normal distribution with average 23.9 and standard deviation 0.43.
+# mu =  23.9 
+# sd = 0.43
+
+# try 1 - WRONG - got 1 
+a <- 23.9 + 0.43
+b <- 23.9 - 0.43 
+
+abs((mean(a <= 23) - mean(b <= 25)))   # just gives a bullion: true - false = 1
+
+
+# try 2 - WRONG - got 0 : it's probabaly because of x value 
+y <- dnorm(x, mean = 23.9, sd = 0.43, log = FALSE)
+y   
+
+abs((mean(y <= 23) - mean(y <= 25))) 
+
+
+# try 3 - correct 
+
+# Approximate distribution of sample average with a normal distribution 
+# use pnorm(end value 1 - mean) / sd - pnorm(end value 2 - mean) /sd 
+pnorm((25-23.9) / 0.43) - pnorm((23-23.9) / 0.43)
+
+# mean: 23.9  & sd: 0.43 
+# searching for proportion  between 23 and 25
+?pnorm # 
+
+# Clear workspace
+rm(list = ls())
+dev.off() # nothing plotted in first place 
