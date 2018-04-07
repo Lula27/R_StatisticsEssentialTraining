@@ -63,3 +63,49 @@ mean(abs(z) <= 3)
 # Which of the following best describes the qq-plot comparing mouse weights to the normal distribution?
 qqnorm(z)
 abline(0,1)
+
+
+# 8. Create the above qq-plot for the four populations: male/females on each of the two diets. 
+# What is the most likely explanation for the mouse weights being well approximated?
+# What is the best explanation for all these being well approximated by the normal distribution? 
+
+mypar(2,2) # Does side-by-side plotting 
+y <- filter(dat, Sex=="M" & Diet=="chow") %>% select(Bodyweight) %>% unlist
+z <- ( y - mean(y) ) / popsd(y)
+qqnorm(z);abline(0,1)
+y <- filter(dat, Sex=="F" & Diet=="chow") %>% select(Bodyweight) %>% unlist
+z <- ( y - mean(y) ) / popsd(y)
+qqnorm(z);abline(0,1)
+y <- filter(dat, Sex=="M" & Diet=="hf") %>% select(Bodyweight) %>% unlist
+z <- ( y - mean(y) ) / popsd(y)
+qqnorm(z);abline(0,1)
+y <- filter(dat, Sex=="F" & Diet=="hf") %>% select(Bodyweight) %>% unlist
+z <- ( y - mean(y) ) / popsd(y)
+qqnorm(z);abline(0,1)
+
+# Possible explanation for these approximating to normal distribution 
+# This just happens to be how nature behaves in this particular case. Perhaps the result of many biological factors averaging out.
+
+y <- filter(dat, Sex=="M" & Diet=="chow") %>%
+      select(Bodyweight) %>% unlist 
+
+set.seed(1)
+
+avgs <- replicate(10000, mean(sample(y, 25)))
+
+# plot against normal distribution 
+mypar(1,2)
+hist(avgs)
+qqnorm(avgs)
+qqline(avgs)
+
+# 9. What is the average of the distribution of the sample average?
+mean(avgs)
+
+
+# 10. What is the standard deviation of the distribution of sample averages? 
+sd(avgs)
+
+
+# Clear workspace
+rm(list = ls())
