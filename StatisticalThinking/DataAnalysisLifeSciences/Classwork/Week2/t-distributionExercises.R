@@ -1,11 +1,13 @@
 # CLT and t-distribution in Practice Exercises
 # Central Limit Theorem applies when events are independent. 
-# Central Limit Theorem is an asympototic result.
+# Central Limit Theorem is an asympototic result. 
+# CLT explains normal Z and tells us the population mean = 0 & population standard deviation = 1
 # Asympototic result: gets closer to being a perfect approximation as sample size increases
 # In practice - determine appropriate sample sizes to apply CLT
 
 # Observing CLT with binary data (step functions - heads vs tails/one side of dice vs others)
 # Ex: observe proportion of times we see 6 when rolling n=100 die 
+# With binary data, we know the variance as: p(1-p)
 
 set.seed(1)
 
@@ -143,4 +145,27 @@ for(i in 1:4) {
 # From all the plots, apparant that the second pairing (p=0.5 & n=30)
 # approximates normal the best 
 
+# CLT and t-distribution in Practice Exercises 
+# Remember: to apply CLT, need to know population standard deviation
+# In Reality: Never have access to all information about the population.
+# Solution: Apply t-test after obtaining one random sample 
 
+# Access dataset - femaleMiceWeights.csv: samples of female mice weights on different diets 
+dat <- read.csv("C:\\Users\\loret\\Desktop\\DataSciencePrep\\R\\R_StatisticsEssentialTraining\\StatisticalThinking\\DataAnalysisLifeSciences\\extdata\\femaleMiceWeights.csv")
+View(dat)
+str(dat) # overview of dataframe - 24 observations (n = 24)
+
+# 3. Define parameter muX as average of the control population - estimated with sample average.
+# What is the sample average (x_bar)? : 23.81333 
+
+# Get 12 measurments 
+require(dplyr)
+X <- filter(dat, Diet=="chow") %>% select(Bodyweight) %>% unlist 
+Y <- filter(dat, Diet=="hf") %>% select(Bodyweight) %>% unlist 
+
+X_bar <- mean(X)
+X_bar # 23.81333 
+
+
+# 6. - clear workspace - left off on #6
+dev.off()
