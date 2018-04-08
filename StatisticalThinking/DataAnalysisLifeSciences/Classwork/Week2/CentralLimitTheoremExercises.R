@@ -109,3 +109,4 @@ sd(avgs)
 
 # Clear workspace
 rm(list = ls())
+dev.off()
