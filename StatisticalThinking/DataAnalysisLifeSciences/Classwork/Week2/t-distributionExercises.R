@@ -120,6 +120,7 @@ zD
 qqnorm(zD)
 abline(0,1) # points even further to the left of normal line
 
+require(rafalib)
 
 # CORRECT way...
 ps <- c(0.5, 0.5, 0.01, 0.01) # combination of  possible probabilities
@@ -161,11 +162,42 @@ str(dat) # overview of dataframe - 24 observations (n = 24)
 # Get 12 measurments 
 require(dplyr)
 X <- filter(dat, Diet=="chow") %>% select(Bodyweight) %>% unlist 
-Y <- filter(dat, Diet=="hf") %>% select(Bodyweight) %>% unlist 
+length(X) # N = 12 
 
+Y <- filter(dat, Diet=="hf") %>% select(Bodyweight) %>% unlist 
+length(Y) # M = 12 
 X_bar <- mean(X)
 X_bar # 23.81333 
+
+Y_bar <- mean(Y)
+Y_bar # 26.83417
+
+# 6 - What is your estimate of sigmaX? 
+
+sd(X) # Sample standard deviation is the estimate of the population standard deviation - 3.022541
+
+# sample sd = 3.022541
+
+# sample mean = 23.81333 
 
 
 # 6. - clear workspace - left off on #6
 dev.off()
+rm(list = ls())
+
+
+# 7. Use CLT to approximate probability that our estimate sample average is off by more than 2 grams from population average.
+z.score <- round((23.81333-0)/(3.022541),3)
+z.score
+
+# t = sample mean - population mean / sample variance
+
+# z = sample mean - population mean / population variance 
+
+mean(z.score < 2)
+
+
+# t <- (23.81333 - 0 /
+
+# estimate of SE(Xbar - Ybar)
+sqrt(sd(X) + sd(Y))
