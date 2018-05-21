@@ -53,5 +53,4 @@ y <- filter(dat, Sex == "M" & Diet == "chow") %>%
   select(Bodyweight) %>% unlist 
 y
 
-dev.off()
-rm(list = ls())
+
