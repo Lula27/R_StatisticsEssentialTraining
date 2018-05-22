@@ -180,24 +180,26 @@ sd(X) # Sample standard deviation is the estimate of the population standard dev
 
 # sample mean = 23.81333 
 
-
-# 6. - clear workspace - left off on #6
-dev.off()
-rm(list = ls())
-
+X_bar - Y_bar
 
 # 7. Use CLT to approximate probability that our estimate sample average is off by more than 2 grams from population average.
-z.score <- round((23.81333-0)/(3.022541),3)
-z.score
+1 - (pnorm(2.292179)-pnorm(-2.292179))
 
-# t = sample mean - population mean / sample variance
+# Correct way: 2*(1-pnorm(2/sd(X) * sqrt(12)))
 
-# z = sample mean - population mean / population variance 
+# 8. What is the estimate of SE (X_bar - Y_bar) = sqrt(var(Y)/12+var(X)/12)
+sqrt(var(Y)/12+var(X)/12) # 1.469867
 
-mean(z.score < 2)
+# 9. So now we can compute Y_bar - X_bar as well as an estimate of this standard error and construct a t-statistic.
+# What number is this t-statistic? 
+a <- (mean(Y)-mean(X))/sqrt(var(Y)/12+var(X)/12) # 2.055174 
+print(a)
+
+# 10. Compute p-value using CLT. 
+# What is the probability of observing a quantity as large as what we computed in #9, when the null distribution is true?
+1 - (pnorm(a) - pnorm(-a)) # 0.0398622 
 
 
-# t <- (23.81333 - 0 /
-
-# estimate of SE(Xbar - Ybar)
-sqrt(sd(X) + sd(Y))
+# 11. What is the p-value under the t-distribution approximation?
+?t.test
+t.test(X, Y) # p-value: 0.053 - Welch Two Sample t-test  
