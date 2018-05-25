@@ -203,3 +203,7 @@ print(a)
 # 11. What is the p-value under the t-distribution approximation?
 ?t.test
 t.test(X, Y) # p-value: 0.053 - Welch Two Sample t-test  
+
+
+# Clean up 
+rm(list = ls())

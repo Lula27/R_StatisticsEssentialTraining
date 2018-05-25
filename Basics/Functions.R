@@ -33,3 +33,25 @@ mean(4,4)
 rm(list = ls())
 
 
+# Practice - 5/25/2018 
+# Exercises 
+
+browseURL("https://www.r-bloggers.com/programmatically-creating-text-output-in-r-exercises/")
+
+# Exercise 1 
+# Print out the following vector as prices in dollars (to the nearest cent)
+v <- c(14.3409087337707, 13.0648270623048, 3.58504267621646, 18.5077076398145,
+        16.8279241011882)
+print(v)
+round(v, 2)
+
+# create function 
+usd <- function(value, currency.sym='$', digits=2, sep=',', decimal='.'){
+  paste(
+    currency.sym,
+    formatC(value, format = 'f', big.mark = sep, digits = digits, decimal.mark = decimal),
+    sep = " "
+  )
+}
+
+usd(v)
