@@ -79,3 +79,7 @@ mean(dat.s) - mean(dat.ns)
 N <- 25 # sample size 
 
 qnorm(0.995)*sqrt( sd( dat.ns)^2/N + sd( dat.s)^2/N )
+
+
+# Clean up - work on it tomorrow...
+rm(list = ls())
