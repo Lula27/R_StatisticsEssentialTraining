@@ -60,3 +60,24 @@ boxplot(males$time, females$time)
 # With histogram 
 hist(males$time, xlim = c(range( nym.2002$time))) 
 hist(females$time, xlim = c(range( nym.2002$time)))
+
+# Scatterplot Exercises 
+# 1. For males, what is the Pearson correlation btw. age and time to finish? 
+cor(males$age,males$time) # 0.2432273
+
+# 2. For females, what is the Pearson correlation between age and time to finish?
+cor(females$age, females$time) # 0.2443156
+
+# 3. Look at scatterplots and boxplots of times stratified by age groups (20-25, 25-30, etc..).
+# After examining the data, what is a more reasonable conclusion?
+require(rafalib)
+mypar(2,2)
+plot(females$age, females$time)
+plot(males$age, males$time)
+group <- floor(females$age/5) * 5
+boxplot(females$time~group)
+group <- floor(males$age/5) * 5
+boxplot(males$time~group)
+
+
+# 
