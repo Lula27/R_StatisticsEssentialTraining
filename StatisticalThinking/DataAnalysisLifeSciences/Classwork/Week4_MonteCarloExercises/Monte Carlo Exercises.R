@@ -64,3 +64,70 @@ for(N in Ns){
          xlim=LIM, ylim=LIM)
   abline(0,1)
 }
+
+# 4. Use Monte Carlo simulation to corroborate that the t-statistic comparing two means and obtained with normally distributed (mean 0 and sd) data follows a t-distribution.
+# For which sample sizes does the approximation best work?
+Ns <- seq(5,30,5)
+B <- 1000
+LIM <- c(-4.5, 4.5)
+for(N in Ns){
+  ts <- replicate(B, {
+    x <- rnorm(N)
+    y <- rnorm(N)
+    t.test(x,y, var.equal = TRUE)$stat
+  })
+  ps <- seq(1/(B+1),1-1/(B+1),len=B)
+  qqplot(qt(ps,df=2*N-2),ts,main=N,
+         xlab="Theoretical",ylab="Observed",
+         xlim=LIM, ylim=LIM)
+  abline(0,1)
+}
+
+# 5. Is the following statement true or false? 
+#  If instead of generating the sample with X=rnorm(15) we generate it with binary data (either positive or negative 1 with probability 0.5) 
+# X =sample(c(-1,1), 15, replace=TRUE) then the t-statistic
+set.seed(1)
+N <- 15 
+B <- 10000 
+tstats <- replicate(B, {
+  X <- sample(c(-1,1), N, replace=TRUE)
+  sqrt(N)*mean(X)/sd(X)
+})
+ps=seq(1/(B+1), 1-1/(B+1), len=B)
+qqplot(qt(ps, N-1), tstats, xlim=range(tstats))
+abline(0,1)
+
+# Results from this plot show that the population data is not normal thus the theory doesn't apply. 
+
+# 6. If instead of generating the sample with X=rnorm(N) with N=1000, we generate the data with binary data X= sample(c(-1,1), N, replace=TRUE),
+# then the t-statistic  sqrt(N)*mean(X)/sd(X) is approximated by a t-distribution with 999 degrees of freedom.
+set.seed(1)
+N <- 1000 
+B <- 10000
+tstats <- replicate(B,{
+  X <- sample(c(-1,1), N, replace=TRUE)
+  sqrt(N)*mean(X)/sd(X)
+})
+qqnorm(tstats)
+abline(0,1)
+# Looks normal to me. Approximated normal 0,1. 
+#Furthermore, t-distribution with df=999 and normal are practically the same.
+
+# 7. Use a Monte Carlo to determine which of the following best approximates 
+# the median of a sample taken from normally distributed population with mean 0 and standard deviation 1.
+set.seed(1)
+Ns <- seq(5,45,5)
+library(rafalib)
+mypar(3,3)
+for(N in Ns){
+  medians <- replicate(10000, median ( rnorm(N) ) )
+  title <- paste("N=",N,", avg=",round( mean(medians), 2) , ", sd*sqrt(N)=", round( sd(medians)*sqrt(N),2) )
+  qqnorm(medians, main = title )
+  qqline(medians)
+}
+# Plot shows that sample median is approximatly normal with mean 0 and SD larger than 1/sqrt(N)
+
+
+# Clean up 
+rm(list = ls())
+dev.off()
