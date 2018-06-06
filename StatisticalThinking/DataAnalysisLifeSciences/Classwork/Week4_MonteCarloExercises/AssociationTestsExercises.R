@@ -16,3 +16,6 @@ chisq.test(tab)
 # 2. Compute the Fisher's exact test for the same table. 
 # What is the p-value? 0.05194 
 fisher.test(tab)
+
+# Clean up 
+rm(list = ls())
