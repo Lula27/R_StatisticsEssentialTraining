@@ -80,4 +80,17 @@ group <- floor(males$age/5) * 5
 boxplot(males$time~group)
 
 
-# 
+# Symmetry of Log Ratios Exercises 
+# What is the fastest time divided the median time? : 0.5605402
+time <- sort(nym.2002$time)
+head(time)
+
+# fastest time divided by the median time 
+min(time) / median(time)
+
+# 2. What is the slowest time divided the median time? : 2.156368 
+max(time) / median(time)
+
+# Compare the two plots 
+plot(time/median(time), ylim = c(1/4,4))
+abline(h=c(1/2,1,2))
