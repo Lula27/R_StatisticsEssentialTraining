@@ -44,7 +44,44 @@ mean(y)/mean(x) # Difference in means = 2.062407
 chickout <- c(chick$weight.4, 3000) # Simple way to include 3000 at end
 
 # get mean difference 
-mean(chickout) / mean(c(chick$weight.4)) # 2.062407
+mean(chickout) / mean(c(chick$weight.4)) # 2.062407 - not robust 
+
+
+#2. Compute the same ratio, but now using median instead of mean.
+# Specifically, what is the median weight of the day 4 chicks, including the outlier chick, divided by the median of the weight of the day 4 chicks without the outlier.
+median(y)/median(x) # 1 - robust
+
+#3. Try the same thing but using standard deviation.
+sd(y)/sd(x) # 101.2859 - not robust: outlier really has an impact 
+
+
+# MAD : 1.4826*(xi - MED(x))
+#4. What's the MAD with the outlier chick divided by the MAD without the outlier chick?
+mad(y)/mad(x) # 1 - robust 
+
+#5. Note: Spearman Correlation is robust (depends on ranks so not affected by outliers as much). The Pearson correlation is not.
+# R Pearson correlation: cor(x,y)
+# R Spearman correlation: cor(x,y, method="spearman")
+
+# Plot the weights of chicks from day 4 and day 21 - without outlier 
+plot(chick$weight.4,chick$weight.21)
+
+# Pearson Correlation 
+a <- cor(chick$weight.4,chick$weight.21) # 0.4159499 
+a
+
+# Spearman correlation
+cor(chick$weight.4,chick$weight.21, method = "spearman") # 0.4303941
+
+# Add the outlier & find Pearson Correlation
+plot(c(chick$weight.4, 3000), c(chick$weight.21, 3000)) # Looks jam packed - much higher correlation 
+
+# Calculate Pearson correlation with outlier 
+b <- cor(c(chick$weight.4, 3000), c(chick$weight.21, 3000)) # 0.9861002
+
+# Calculate the difference
+#  Again, divide the Pearson correlation with the outlier chick over the Pearson correlation computed without the outliers. 
+b/a # 2.370719 
 
 # Mann-Whitney-Wilcoxon Test Exercises 
 #1. Perform a t-test of x and y, after adding a single chick of weight 200 grams to x (the diet 1 chicks)
