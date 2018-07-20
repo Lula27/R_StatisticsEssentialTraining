@@ -129,3 +129,7 @@ k <- c(400,500,600)
 wilcox.test(i,k)$p.value # 0.1 
 
 # NOtice that there is no difference even going up in sample size by a factor of 100...
+
+# Clean up 
+rm(list = ls())
+dev.off()
