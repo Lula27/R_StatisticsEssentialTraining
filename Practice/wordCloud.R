@@ -24,7 +24,7 @@ books <- list("A Mid Summer Night's Dream" = "summer",
                "Romeo and Juliet" = "romeo")
 
 books[1]
-
+print(books)
 # Using "memoise" to automatically cache the results 
 # Hmm worked despite the issue of the one ghost parenth in the begging 
 getTermMatrix <- memoise(function(book) {
@@ -52,3 +52,57 @@ getTermMatrix <- memoise(function(book) {
 }) 
 
 ?Corpus() 
+
+# Server.R 
+
+function(input, output, session) {
+  # Define reactive expression for document term matrix 
+  terms <- reactive({
+    # Change when "update" button is pressed...
+    input$update 
+    #...but not for anything else 
+    isolate({
+      withProgress({
+        setProgress(message = "Processing corpus...")
+        getTermMatrix(input$selection)
+      })
+    })
+  })
+
+
+# Make wordcloud drawing predictable during a session 
+wordcloud_rep <- repeatable(wordcloud) 
+
+output$plot <- renderPlot({
+  v <- terms()
+  wordcloud_rep(names(v), v, scale=c(4,0.5),
+                min.freq = input$freq, max.words = input$max, 
+                colors = brewer.pal(8, "Dark2"))
+  })
+
+} 
+
+# ui.R 
+fluidPage(
+  # Application title 
+  titlePanel("Word Cloud"), 
+  
+  sidebarLayout(
+    # Sidebar w/ a slider and selection inputs 
+    sidebarPanel(
+      selectInput("selection", "Choose a book:", 
+                  choice = books),
+      actionButton("update", "Change"),
+      hr(), 
+      sliderInput("freq",
+                  "Minimum Frequency:",
+                  min = 1, max = 50, value = 15),
+      sliderInput("max",
+                  "Maximum Number of Words:",
+                  min = 1, max = 300, value = 100)
+    ), 
+    mainPanel(
+      plotOutput("plot")
+    )
+  )
+)
