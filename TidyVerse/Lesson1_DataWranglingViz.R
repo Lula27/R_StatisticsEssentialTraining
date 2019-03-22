@@ -284,3 +284,68 @@ surveys_abun_species %>%
     geom_line() + 
     facet_wrap(~ species)
 
+
+# Split line in each plot by sex of each individual measured 
+surveys_abun_species %>% 
+  group_by(year, species, sex) %>% 
+  tally()
+
+# Facet further by splitting by sex using color 
+surveys_abun_species %>% 
+  group_by(year, species, sex) %>% 
+  tally() %>% 
+  ggplot(aes(x = year, y = n, color = sex)) + 
+    geom_line() + 
+  facet_wrap(~ species)
+
+# Remove observations where no sex was recorded - remove observations of unknown sex 
+surveys_abun_species %>% 
+  filter(!is.na(sex)) %>%
+  group_by(year, species, sex) %>%
+  tally() %>% 
+  ggplot(aes(x = year, y = n, color = sex)) +
+    geom_line() + 
+    facet_wrap(~ species)
+
+# Specify which colors to use, change line thickness & adjust x labels so they don't overlap 
+color_names <- c('black', 'orange')
+
+surveys_abun_species %>%
+  filter(!is.na(sex)) %>% 
+  group_by(year, species, sex) %>%
+  tally() %>%
+  ggplot(aes(x = year, y = n, color = sex)) +
+    geom_line(size = 1) +
+    scale_color_manual(values = color_names) +
+    facet_wrap(~ species) + 
+    theme_bw() + 
+    theme(text = element_text(size = 12),
+          axis.text.x = element_text(angle = 30, hjust = 1))
+
+# Use histogram to complete following: 
+# Separate each species into its own subplot 
+# Figure out which year had the highest animal weight 
+# See if yearly trend same for all species 
+head(yearly_counts) 
+
+ggplot(yearly_counts, aes(x = n, fill = genus)) +
+  geom_histogram() +
+  facet_wrap(~ genus)
+
+# Time series of genus 
+surveys_abun_species %>% 
+  filter(!is.na(weight)) %>%
+  group_by(year) %>%
+  summarize(mean_weight = mean(weight)) %>%
+  ggplot(aes(x = year, y = mean_weight)) + 
+    geom_line()
+
+
+# Facet by species 
+surveys_abun_species %>% 
+  filter(!is.na(weight)) %>% 
+  group_by(year, species) %>% 
+  summarize(mean_weight = mean(weight)) %>% 
+  ggplot(aes(x = year, y = mean_weight, color = species)) +
+    geom_line() + 
+    facet_wrap(~ species)
