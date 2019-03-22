@@ -75,3 +75,58 @@ surveys %>%
   summarize(mean_hindfoot_length = mean(hindfoot_length),
             min_hindfoot_length = min(hindfoot_length),
             max_hindfoot_length = max(hindfoot_length))
+
+# Year level analysis 
+surveys %>%
+  filter(!is.na(weight)) %>%
+  group_by(year) %>%
+  filter(weight == max(weight)) %>% 
+  select(year, genus, species, weight) %>%
+  arrange(year)
+
+# Tally used to summarize categorical data 
+surveys %>% 
+  group_by(taxa) %>%
+  tally() 
+
+# Use tally() to group on multiple variables - counting total number of records for each category 
+surveys %>% 
+  group_by(taxa, sex) %>%
+  tally()
+
+# View 5 most abundant species among observations 
+surveys %>% 
+  group_by(species) %>% 
+  tally() %>% 
+  print(n = 15)
+
+# Order table to display most abundent species first - use arrange()
+surveys %>%
+  group_by(species) %>% 
+  tally() %>% 
+  arrange(n)
+
+# Display most abundant species - highest counts first - arrange n in descending order 
+surveys %>%
+  group_by(species) %>%
+  tally() %>%
+  arrange(desc(n)) %>%
+  head(15)
+
+# Include more attributes about these species 
+surveys %>%
+  group_by(species, taxa, genus) %>% 
+  tally() %>%
+  arrange(desc(n)) %>%
+  head(5)
+
+# Number of individuals caught in each plot type surveyed 
+surveys %>% 
+  group_by(plot_type) %>%
+  tally 
+
+# Alternative for number of individuals caught in each plot type surveyed 
+surveys %>% 
+  group_by(sex) %>%
+  summarize(n = n())
+
