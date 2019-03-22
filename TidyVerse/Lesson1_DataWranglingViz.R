@@ -231,4 +231,56 @@ ggplot(surveys_abun_species, aes(x = weight, y = hindfoot_length, color = specie
 ggplot(surveys_abun_species, aes(x = weight, y = species, color = hindfoot_length)) + 
   geom_point(size = 0.1, position = 'jitter')
 
+# Split-Apply-Combine 
+# Calculate number of counts per year for each species per year 
+yearly_counts <- surveys_abun_species %>%
+  group_by(year, genus) %>%
+  tally() %>% 
+  arrange(desc(n))
+
+yearly_counts
+
+# Plot histogram 
+ggplot(yearly_counts, aes(x = n)) + 
+  geom_histogram()
+
+
+# Improve binwidth 
+surveys_abun_species %>% 
+  group_by(year, species) %>% 
+  tally() %>%
+  ggplot(aes(x = n)) +
+    geom_histogram()
+
+# Color histogram by species 
+surveys_abun_species %>% 
+  group_by(year, species) %>% 
+  tally() %>% 
+  ggplot(aes(x = n, fill = species)) + 
+  geom_histogram()
+
+# Explore how number of genus varies over time 
+# Visualize logitudinal data as line plot with years on x axis and counts on y axis 
+# Doesn't work cus we plotted data for all species together 
+surveys_abun_species %>% 
+  group_by(year, species) %>% 
+  tally() %>% 
+  ggplot(aes(x = year, y = n)) + 
+    geom_line()
+
+# Have ggplot draw line for each species by modifying aesthetic function to include group = species 
+surveys_abun_species %>% 
+  group_by(year, species) %>% 
+  tally() %>% 
+  ggplot(aes(x = year, y = n, color = species)) + 
+  geom_line()
+
+
+# Faceting - allow user to split one plot into multiple subplots based on variable included in dataset 
+surveys_abun_species %>% 
+  group_by(year, species) %>% 
+  tally() %>%
+  ggplot(aes(x = year, y = n)) + 
+    geom_line() + 
+    facet_wrap(~ species)
 
